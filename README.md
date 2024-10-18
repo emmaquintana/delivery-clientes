@@ -47,8 +47,8 @@
   - Opción para repetir pedidos anteriores con un solo clic.
 - **Estado del pedido**:
   - Mostrar estado final del pedido (entregado, cancelado, en disputa).
-- **Facturación y recibos**:
-  - Descarga de recibos o facturas en formato PDF.
+- **Recibos**:
+  - Descarga de comprobantes en formato PDF o PNG.
 
 ## 6. Soporte o chat
 - **Centro de ayuda**:
