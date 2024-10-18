@@ -65,3 +65,19 @@
   - Notificaciones push para promociones y ofertas.
 - **Recordatorios**:
   - Notificaciones de pedidos incompletos o recordatorios de fechas importantes.
+
+## 8. Autenticación
+- **Registro de usuarios**:
+  - Formulario de registro para nuevos usuarios con validación de correo electrónico.
+  - Opción de autenticación con redes sociales (Google, Facebook) para agilizar el proceso de login.
+- **Inicio de sesión**:
+  - Autenticación de usuarios mediante correo electrónico y contraseña.
+  - Opción de autenticación con redes sociales (Google, Facebook) para agilizar el proceso de login.
+- **Restablecimiento de contraseña**:
+  - Funcionalidad para que los usuarios puedan restablecer su contraseña en caso de olvido.
+  - Envío de enlaces de recuperación de contraseña por correo electrónico.
+- **Sesión persistente**:
+  - Permitir que los usuarios mantengan la sesión iniciada para agilizar futuros accesos.
+  - Expiración de sesiones después de un período de inactividad para mayor seguridad.
+- **Panel de usuario**:
+  - Pantalla para que los usuarios puedan editar su perfil, incluyendo datos personales y dirección de entrega.
