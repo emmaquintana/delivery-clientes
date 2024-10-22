@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">delivery-clientes</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="logo_de_la_aplicacion">Delivery Clientes</string>
+
+    <string name="login">Iniciar Sesión</string>
+    <string name="signup">Registrar</string>
+    <string name="olvidoContraseña">¿Olvido su password?</string>
+    <string name="botonLogin">INICIAR SESIÓN</string>
+    <string name="noTieneCuentaLabel">¿No tiene una cuenta?</string>
+    <string name="linkNoTieneCuentaLabel">Registrar.</string>
+    <string name="logo_de_la_aplicaicon">Hunny Food</string>
+    <string name="noTieneCuenta">¿No tiene una cuenta?</string>
+    <string name="ejemplo_email">code.hunny40@gmail.com</string>
+    <string name="ejemplo_password">**********</string>
+    <string name="ejemplo_name">Hunny Code</string>
+    <string name="hint_email">EMAIL</string>
+    <string name="hint_password">PASSWORD</string>
+    <string name="hint_name">NOMBRE</string>
+    <string name="hint_confirmPassword">CONFIRMAR PASSWORD</string>
+    <string name="botonSignUp">REGISTRAR</string>
+    <string name="yaTieneCuenta">¿Ya tiene una cuenta?</string>
+    <string name="linkTieneCuentaLabel">Iniciar Sesión.</string>
+    <string name="forgottenPWBoton">ENVIAR</string>
+    <string name="resettedPWBoton">HECHO</string>
+    <string name="hint_newPassword">NUEVA PASSWORD</string>
+    <string name="changePasswordBoton">CAMBIAR PASSWORD</string>
+    <string name="resettedPWTextView">Su password ha sido reseteada!</string>
+    <string name="changePWInstructions">Ingresar una nueva password y confirmar. </string>
+
+
+    <string name="forgottenPWInstructions">Por favor ingrese su direccion de email. Recibirá un link
+para crear una nueva password via email.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
