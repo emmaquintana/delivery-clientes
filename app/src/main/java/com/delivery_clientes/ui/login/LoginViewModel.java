@@ -16,7 +16,9 @@ public class LoginViewModel extends AndroidViewModel {
 
     public LoginViewModel(Application application){
         super(application);
-        db = Room.databaseBuilder(application, AppDatabase.class, "usuarios-database").build();
+        db = Room.databaseBuilder(application, AppDatabase.class, "usuarios-database")
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     public MutableLiveData<LoginResult> getLoginResult(){
@@ -35,6 +37,8 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     public void register(Usuario usuario){
-        new Thread(() -> db.usuariosDAO().insertUsuario(usuario)).start();
+        new Thread(() -> {
+            db.usuariosDAO().insertUsuario(usuario);
+        }).start();
     }
 }

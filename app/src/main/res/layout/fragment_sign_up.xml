@@ -1,12 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="360dp"
-    android:layout_height="640dp"
-    android:background="@color/md_theme_background"
-    tools:context=".ui.login.LoginFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/md_theme_background"
+    tools:context=".ui.register.SignUpFragment">
+
+    <TextView
+        android:id="@+id/bigLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="260dp"
+        android:text="@string/signup"
+        android:textColor="@color/md_theme_primary"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mailConstraint"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bigLogin">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mailInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="@color/md_theme_onPrimaryContainer"
+            app:boxBackgroundColor="@color/md_theme_primaryContainer"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxStrokeColor="@color/md_theme_outline"
+            app:boxStrokeWidth="0.5dp"
+            app:endIconDrawable="@drawable/check"
+            app:endIconMode="custom"
+            app:endIconTint="@color/md_theme_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mailInput"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/hint_email"
+                android:textColor="@color/md_theme_onPrimaryContainer" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/passwordConstraint"
@@ -17,26 +74,26 @@
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameConstraint">
+        app:layout_constraintTop_toBottomOf="@+id/mailConstraint">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordInputLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColorHint="@color/md_theme_onPrimaryContainer"
-            app:boxBackgroundColor="@color/md_theme_primaryContainer"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
             app:boxCornerRadiusTopEnd="25dp"
             app:boxCornerRadiusTopStart="25dp"
-            app:boxStrokeColor="@color/md_theme_secondary"
+            app:boxBackgroundColor="@color/md_theme_primaryContainer"
+            app:boxStrokeColor="@color/md_theme_outline"
             app:boxStrokeWidth="0.5dp"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/md_theme_onPrimaryContainer"
+            app:endIconTint="@color/md_theme_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColorHint="@color/md_theme_onPrimaryContainer">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordInput"
@@ -45,114 +102,99 @@
                 android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:textColor="@color/md_theme_onPrimaryContainer"
-                tools:text="**********" />
+                tools:text="@string/ejemplo_password" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/nameConstraint"
+        android:id="@+id/confirmPasswordConstraint"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-
-
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bigLogin">
+        app:layout_constraintTop_toBottomOf="@+id/passwordConstraint">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/mailInputLayout"
+            android:id="@+id/confirmPasswordLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:textColorHint="@color/md_theme_onPrimaryContainer"
-            app:boxBackgroundColor="@color/md_theme_primaryContainer"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusBottomStart="25dp"
             app:boxCornerRadiusTopEnd="25dp"
             app:boxCornerRadiusTopStart="25dp"
-            app:boxStrokeColor="@color/md_theme_secondaryContainer"
+            app:boxBackgroundColor="@color/md_theme_primaryContainer"
+            app:boxStrokeColor="@color/md_theme_outline"
             app:boxStrokeWidth="0.5dp"
-            app:endIconDrawable="@drawable/check"
-            app:endIconMode="custom"
-            app:endIconTint="@color/md_theme_onPrimaryContainer"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/md_theme_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColorHint="@color/md_theme_onPrimaryContainer">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailInput"
+                android:id="@+id/confirmPasswordInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
-
-                android:hint="@string/hint_email"
+                android:hint="@string/hint_confirmPassword"
+                android:inputType="textPassword"
                 android:textColor="@color/md_theme_onPrimaryContainer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="code.hunny40@gmail.com" />
+                tools:text="@string/ejemplo_password" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/bigLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="260dp"
-        android:text="@string/login"
-        android:textColor="@color/md_theme_primary"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/forgotPasswordLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/olvidoContraseña"
-        android:textColor="@color/md_theme_error"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordConstraint" />
-
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/md_theme_secondary"
-        android:text="@string/botonLogin"
+        android:text="@string/botonSignUp"
         android:textColor="@color/md_theme_onSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordLink" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordConstraint" />
+
+    <TextView
+        android:id="@+id/accountlessText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/yaTieneCuenta"
+        android:textColor="@color/md_theme_tertiary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+
+    <TextView
+        android:id="@+id/loginLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/linkTieneCuentaLabel"
+        android:textColor="@color/md_theme_primary"
+        app:layout_constraintStart_toEndOf="@+id/accountlessText"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/twitterConstraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/googleConstraint"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton">
+        app:layout_constraintTop_toBottomOf="@+id/loginLink">
 
         <ImageView
             android:id="@+id/twitterCircle"
@@ -180,10 +222,10 @@
         android:id="@+id/facebookConstraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="96dp"
-        app:layout_constraintEnd_toStartOf="@+id/googleConstraint"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton">
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/twitterConstraint"
+        app:layout_constraintTop_toBottomOf="@+id/accountlessText">
 
         <ImageView
             android:id="@+id/facebookButton"
@@ -212,10 +254,10 @@
         android:id="@+id/googleConstraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="74dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton">
+        app:layout_constraintTop_toBottomOf="@+id/loginLink">
 
         <ImageView
             android:id="@+id/googleLink"
@@ -237,28 +279,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/circular_border_google" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/accountlessText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/noTieneCuenta"
-        android:textColor="@color/md_theme_tertiary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
-
-    <TextView
-        android:id="@+id/registerLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/linkNoTieneCuentaLabel"
-        android:textColor="@color/md_theme_primary"
-        app:layout_constraintStart_toEndOf="@+id/accountlessText"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,7 @@ public interface UsuariosDAO {
 
     @Insert
     void insertUsuario(Usuario usuario);
+
+    @Query("SELECT * FROM usuarios WHERE email = :email")
+    Usuario findUserByUsername(String email);
 }
