@@ -63,6 +63,8 @@ public class LoginFragment extends Fragment {
             if(loginResult.isSuccess()){
                 Toast.makeText(getContext(),"Login exitoso", Toast.LENGTH_SHORT).show();
                 //Agregar navegacion aqui
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_loginFragment_to_homeFragment);
             } else {
                 Toast.makeText(getContext(), loginResult.getError(), Toast.LENGTH_SHORT).show();
             }
@@ -74,6 +76,7 @@ public class LoginFragment extends Fragment {
             NavController navController = Navigation.findNavController(view);
             navController.navigate(R.id.action_loginFragment_to_signUpFragment);
         });
+
 
 
     }
