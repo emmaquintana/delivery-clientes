@@ -1,11 +1,13 @@
 package com.delivery_clientes.data.db.entities;
 
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
 
-@Entity(tableName = "usuarios")
+@Entity(tableName = "usuarios",
+        indices = {@Index(value = "email", unique = true)})
 public class Usuario {
 
     @PrimaryKey(autoGenerate = true)
