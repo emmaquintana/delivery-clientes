@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="360dp"
-    android:layout_height="640dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:backgroundTint="@color/md_theme_background"
     tools:context=".LoginActivity">
-
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -16,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"
-        />
+        app:navGraph="@navigation/nav_graph" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
