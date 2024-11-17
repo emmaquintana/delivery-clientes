@@ -2,17 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/homeicon"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        android:checked="true"
+        />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/pedidosFragment"
         android:icon="@drawable/pedidosicon"
         android:title="@string/title_pedidos" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/perfilicon"
         android:title="@string/title_perfil" />
 

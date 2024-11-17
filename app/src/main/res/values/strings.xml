@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">delivery-clientes</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="logo_de_la_aplicacion">Delivery Clientes</string>
 
     <string name="login">Iniciar Sesión</string>

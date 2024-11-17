@@ -30,7 +30,7 @@ public class SignUpFragment extends Fragment {
     private Button signUpButton;
 
     public SignUpFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -67,7 +67,6 @@ public class SignUpFragment extends Fragment {
         signUpViewModel.getSignUpResult().observe(getViewLifecycleOwner(), signUpResult -> {
             if (signUpResult.isSuccess()){
                 Toast.makeText(getContext(), signUpResult.getMessage(), Toast.LENGTH_SHORT).show();
-                //Agregar navegacion a otra screen en caso de registro exitoso
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_signUpFragment_to_loginFragment);
             } else {

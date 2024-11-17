@@ -6,7 +6,7 @@ public class LoginResult {
 
     public LoginResult(boolean success){
         this.success = success;
-        this.error = null;
+        this.error = "Login Exitoso";
     }
 
     public LoginResult(boolean success, String error){
