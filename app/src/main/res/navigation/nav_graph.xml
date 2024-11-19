@@ -9,22 +9,22 @@
         android:id="@+id/loginFragment"
         android:name="com.delivery_clientes.ui.login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
         <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_loginFragment_to_containerActivity"
+            app:destination="@id/containerActivity" />
     </fragment>
 
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.delivery_clientes.ui.register.SignUpFragment"
         android:label="SignUpFragment"
-        tools:layout="@layout/fragment_sign_up" >
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -35,40 +35,26 @@
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="false" />
     </fragment>
+    <activity
+        android:id="@+id/containerActivity"
+        android:name="com.delivery_clientes.ContainerActivity"
+        android:label="activity_container"
+        tools:layout="@layout/activity_container" />
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.delivery_clientes.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
 
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.delivery_clientes.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile"
-        >
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <!--    <fragment/>-->
-<!--        android:id="@+id/forgottenPasswordFragment"-->
-<!--        android:name="com.food_app.fragments.ForgottenPasswordFragment"-->
-<!--        android:label="fragment_forgotten_password"-->
-<!--        tools:layout="@layout/fragment_forgotten_password" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/resettedPasswordFragment"-->
-<!--        android:name="com.food_app.fragments.ResettedPasswordFragment"-->
-<!--        android:label="fragment_resetted_password"-->
-<!--        tools:layout="@layout/fragment_resetted_password" />-->
-<!--    <fragment-->
-<!--        android:id="@+id/changePasswordFragment"-->
-<!--        android:name="com.food_app.fragments.ChangePasswordFragment"-->
-<!--        android:label="fragment_change_password"-->
-<!--        tools:layout="@layout/fragment_change_password" />-->
+    <!--        android:id="@+id/forgottenPasswordFragment"-->
+    <!--        android:name="com.food_app.fragments.ForgottenPasswordFragment"-->
+    <!--        android:label="fragment_forgotten_password"-->
+    <!--        tools:layout="@layout/fragment_forgotten_password" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/resettedPasswordFragment"-->
+    <!--        android:name="com.food_app.fragments.ResettedPasswordFragment"-->
+    <!--        android:label="fragment_resetted_password"-->
+    <!--        tools:layout="@layout/fragment_resetted_password" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/changePasswordFragment"-->
+    <!--        android:name="com.food_app.fragments.ChangePasswordFragment"-->
+    <!--        android:label="fragment_change_password"-->
+    <!--        tools:layout="@layout/fragment_change_password" />-->
 </navigation>

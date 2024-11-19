@@ -24,23 +24,5 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    @Override
-    public void onBackPressed() {
-        // Obtiene el NavHostFragment
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
-        if (navHostFragment != null) {
-            NavController navController = navHostFragment.getNavController();
-            NavDestination currentDestination = navController.getCurrentDestination();
 
-            // Verifica si el destino actual es HomeFragment
-            if (currentDestination != null && currentDestination.getId() == R.id.homeFragment) {
-                moveTaskToBack(true);
-            } else {
-                super.onBackPressed();
-            }
-        } else {
-            super.onBackPressed();
-        }
-    }
 }

@@ -24,23 +24,12 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-//        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.home_nav_host_fragment);
-//        if(navHostFragment != null){
-//            NavController navController = navHostFragment.getNavController();
-//            BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottom_navigation);
-//            NavigationUI.setupWithNavController(bottomNavigationView, navController);
-//        }
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottom_navigation);
-        NavController navController = Navigation.findNavController(view);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
 }

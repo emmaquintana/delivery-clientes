@@ -9,9 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.delivery_clientes.R;
-import com.delivery_clientes.data.db.entities.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginFragment extends Fragment {
@@ -46,6 +43,13 @@ public class LoginFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 //        mViewModel.register(new Usuario("usuario@email.com","usuario"));
 
+        //Controla si ya se inicio sesion
+        if (mViewModel.isLoggedIn()) {
+            NavController navController = Navigation.findNavController(view);
+            navController.navigate(R.id.action_loginFragment_to_containerActivity);
+            return;
+        }
+
         emailInput = view.findViewById(R.id.emailInput);
         passwordInput = view.findViewById(R.id.passwordInput);
         loginButton = view.findViewById(R.id.loginButton);
@@ -61,25 +65,30 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        //Observa el resultado del login
         mViewModel.getLoginResult().observe(getViewLifecycleOwner(), loginResult -> {
+
+            //Login exitoso
             if(loginResult.isSuccess()){
-                Toast.makeText(getContext(),"Login exitoso", Toast.LENGTH_SHORT).show();
-                //Agregar navegacion aqui
+                Toast.makeText(getContext(),loginResult.getError(), Toast.LENGTH_SHORT).show();
+                //Navegacion a home
                 NavController navController = Navigation.findNavController(view);
-                navController.navigate(R.id.action_loginFragment_to_homeFragment);
+                if (navController.getCurrentDestination().getId() != R.id.homeFragment) {
+                    navController.navigate(R.id.action_loginFragment_to_containerActivity);
+                }
+
+            //Login fallido
             } else {
                 Toast.makeText(getContext(), loginResult.getError(), Toast.LENGTH_SHORT).show();
             }
         });
 
+        //Navegacion a SignUp
         TextView registerLink = view.findViewById(R.id.registerLink);
-
         registerLink.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(view);
             navController.navigate(R.id.action_loginFragment_to_signUpFragment);
         });
-
-
 
     }
 

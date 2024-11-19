@@ -30,9 +30,5 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottom_navigation);
-        NavController navController = Navigation.findNavController(view);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
     }
 }
