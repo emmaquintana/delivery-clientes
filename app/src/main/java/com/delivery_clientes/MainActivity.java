@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.delivery_clientes.data.db.AppDatabase;
+import com.delivery_clientes.data.db.dao.CategoriasDAO;
+import com.delivery_clientes.data.db.entities.Categorias;
+import com.delivery_clientes.data.db.entities.Negocios;
+import com.delivery_clientes.data.db.entities.Productos;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +33,59 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }, SPLASH_SCREEN_TIMEOUT);
+
+//
+//        //Eliminar posteriormente
+//
+//        //Categorias
+//        Categorias categoria1 = new Categorias();
+//        categoria1.setNombre("Categoria 1");
+//
+//        Categorias categoria2 = new Categorias();
+//        categoria2.setNombre("Categoria 2");
+//
+//        Categorias categoria3 = new Categorias();
+//        categoria3.setNombre("Categoria 3");
+//
+//        //Negocio
+//        Negocios negocio1 = new Negocios();
+//        negocio1.setNombre("Negocio1");
+//        negocio1.setCuit("123456");
+//        negocio1.setEmail("negocio@email.com");
+//        negocio1.setEstado(1);
+//        negocio1.setDireccion_id(1);
+//        negocio1.setTelefono("385123456");
+//
+//        //Productos
+//        Productos prod1 = new Productos();
+//        prod1.setNombre("Producto 1");
+//        prod1.setDescripcion("Descripcion 1");
+//        prod1.setPrecio(100);
+//        prod1.setStock(10);
+//
+//        prod1.setCategoria_id(1);
+//        prod1.setNegocio_id(1);
+//
+
+//        Productos prod2 = new Productos();
+//        prod2.setNombre("Producto 2");
+//        prod2.setDescripcion("Descripcion 2");
+//        prod2.setPrecio(2000);
+//        prod2.setStock(20);
+//        prod2.setCategoria_id(1);
+//        prod2.setNegocio_id(1);
+//
+//        new Thread(() -> {
+//            AppDatabase db = AppDatabase.getInstance(getApplication());
+//            db.categoriasDAO().insertarCategoria(categoria1);
+//            db.categoriasDAO().insertarCategoria(categoria2);
+//            db.categoriasDAO().insertarCategoria(categoria3);
+//
+//            db.negociosDAO().insertarNegocio(negocio1);
+//
+//            db.productosDAO().insertarProducto(prod2);
+//        }).start();
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.delivery_clientes.data.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -21,6 +22,8 @@ public interface ProductosDAO {
     @Query("SELECT * FROM productos WHERE nombre = :nombre")
     List<Productos> obtenerProductosPorNombre(String nombre);
 
+    @Query("SELECT * FROM productos")
+    LiveData<List<Productos>> obtenerProductosLive();
 
     //Estos metodos no se suponen que los usen los clientes, pero son necesarios por razones practicas
     @Insert
