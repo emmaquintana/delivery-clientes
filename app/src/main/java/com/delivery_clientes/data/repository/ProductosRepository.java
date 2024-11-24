@@ -27,6 +27,10 @@ public class ProductosRepository {
         return productosDAO.obtenerProductosPorCategoria(categoria_id);
     }
 
+    public LiveData<List<Productos>> obtenerProductosLivePorCategoria(int categoria_id){
+        return productosDAO.obtenerProductosLivePorCategoria(categoria_id);
+    }
+
     public List<Productos> obtenerProductosPorNombre(String nombre){
         return productosDAO.obtenerProductosPorNombre(nombre);
     }

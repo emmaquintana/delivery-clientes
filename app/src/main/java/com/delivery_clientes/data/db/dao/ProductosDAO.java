@@ -25,6 +25,10 @@ public interface ProductosDAO {
     @Query("SELECT * FROM productos")
     LiveData<List<Productos>> obtenerProductosLive();
 
+    @Query("SELECT * FROM productos WHERE categoria_id = :categoria_id")
+    LiveData<List<Productos>> obtenerProductosLivePorCategoria(int categoria_id);
+
+
     //Estos metodos no se suponen que los usen los clientes, pero son necesarios por razones practicas
     @Insert
     void insertarProducto(Productos prod);
