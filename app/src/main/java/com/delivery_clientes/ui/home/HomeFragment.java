@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,12 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Categorias;
+import com.delivery_clientes.data.db.entities.Productos;
 import com.delivery_clientes.ui.home.productos.FiltrosProductosAdapter;
 import com.delivery_clientes.ui.home.productos.ProductosAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -32,6 +35,7 @@ public class HomeFragment extends Fragment {
     private ProductosAdapter productosAdapter;
     private FiltrosProductosAdapter filtrosProductosAdapter;
     private HomeViewModel homeViewModel;
+    private SearchView searchView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -48,7 +52,8 @@ public class HomeFragment extends Fragment {
         recyclerViewFiltros = view.findViewById(R.id.recyclerViewFiltros);
         recyclerViewFiltros.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        //Se instancia un adaptador de categorias, se crea una lista vacia inicialmente, y se le envia un listener, se genera el listado filtrado mediante el id de categoria
+        //Se instancia el adaptador de categorias. Se ejecuta una funcion lambda
+        //Fun Lambda -> Obtiene los productos filtrados por categoria, se observan los cambios en el listado de productos y se actualiza su adaptador
         filtrosProductosAdapter = new FiltrosProductosAdapter(new ArrayList<>(),
                 categoria -> {
                     homeViewModel.getProductosLiveDataPorCategoria(categoria.getId())
@@ -57,6 +62,21 @@ public class HomeFragment extends Fragment {
                             });
                 });
         recyclerViewFiltros.setAdapter(filtrosProductosAdapter);
+
+        //Configuracion de barra de busqueda
+        searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                filtrarProductosPorNombre(s);
+                return true;
+            }
+        });
 
         return view;
     }
@@ -83,5 +103,19 @@ public class HomeFragment extends Fragment {
 
             filtrosProductosAdapter.updateData(categoriasList);
         });
+    }
+
+    private void filtrarProductosPorNombre(String s){
+        if(homeViewModel.getProductosLiveData() != null){
+            homeViewModel.getProductosLiveData().observe(getViewLifecycleOwner(), productosList -> {
+                List<Productos> listaFiltrada = new ArrayList<>();
+                for (Productos producto : productosList){
+                    if(producto.getNombre().toLowerCase().contains(s.toLowerCase())){
+                        listaFiltrada.add(producto);
+                    }
+                }
+                productosAdapter.updateData(listaFiltrada);
+            });
+        }
     }
 }
