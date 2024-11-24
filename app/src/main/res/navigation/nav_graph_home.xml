@@ -14,10 +14,18 @@
         android:id="@+id/pedidosFragment"
         android:name="com.delivery_clientes.ui.pedidos.PedidosFragment"
         android:label="fragment_pedidos"
-        tools:layout="@layout/fragment_pedidos" />
+        tools:layout="@layout/fragment_pedidos" >
+        <action
+            android:id="@+id/action_pedidosFragment_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"
+        android:label="DetalleFragment" />
 </navigation>

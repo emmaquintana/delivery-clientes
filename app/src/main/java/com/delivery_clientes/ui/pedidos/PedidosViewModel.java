@@ -1,19 +1,31 @@
 package com.delivery_clientes.ui.pedidos;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class PedidosViewModel extends ViewModel {
+import com.delivery_clientes.data.db.entities.Pedidos;
+import com.delivery_clientes.data.repository.PedidosRepository;
 
-    private final MutableLiveData<String> mText;
+import java.util.List;
 
-    public PedidosViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+public class PedidosViewModel extends AndroidViewModel {
+
+    private final PedidosRepository pedidosRepository;
+    private final LiveData<List<Pedidos>> pedidosLiveData;
+
+    public PedidosViewModel(@NonNull Application application) {
+        super(application);
+        pedidosRepository = new PedidosRepository(application);
+        pedidosLiveData = pedidosRepository.obtenerPedidosLive();
+
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Pedidos>> getPedidosLiveData() {
+        return pedidosLiveData;
     }
 }
