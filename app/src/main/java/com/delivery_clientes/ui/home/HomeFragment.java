@@ -96,10 +96,20 @@ public class HomeFragment extends Fragment {
         //Observacion de Lista de Filtros/Categorias
         homeViewModel.getCategoriasLiveData().observe(getViewLifecycleOwner(), categoriasList -> {
             //Categoria virtual para recuperar todos los productos en caso de que hayan sido filtrados
-            Categorias categoriaTodos = new Categorias();
-            categoriaTodos.setId(-1);
-            categoriaTodos.setNombre("Todos");
-            categoriasList.add(0,categoriaTodos);
+            boolean todosExiste = false;
+            for (Categorias categoria : categoriasList){
+                if(categoria.getId() == -1){
+                    todosExiste = true;
+                    break;
+                }
+            }
+
+            if(!todosExiste){
+                Categorias categoriaTodos = new Categorias();
+                categoriaTodos.setId(-1);
+                categoriaTodos.setNombre("Todos");
+                categoriasList.add(0,categoriaTodos);
+            }
 
             filtrosProductosAdapter.updateData(categoriasList);
         });
