@@ -18,7 +18,11 @@
         android:id="@+id/pedidosFragment"
         android:name="com.delivery_clientes.ui.pedidos.PedidosFragment"
         android:label="fragment_pedidos"
-        tools:layout="@layout/fragment_pedidos" />
+        tools:layout="@layout/fragment_pedidos" >
+        <action
+            android:id="@+id/action_pedidosFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
@@ -30,6 +34,9 @@
         <action
             android:id="@+id/action_profileFragment_to_faqFragment"
             app:destination="@id/faqFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_pedidosFragment"
+            app:destination="@id/pedidosFragment" />
     </fragment>
     <fragment
         android:id="@+id/faqFragment"

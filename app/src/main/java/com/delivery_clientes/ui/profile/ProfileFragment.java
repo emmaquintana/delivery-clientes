@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -83,6 +82,7 @@ public class ProfileFragment extends Fragment {
                 case "Mis datos":
                     break;
                 case "Mis pedidos":
+                    navController.navigate(R.id.action_profileFragment_to_pedidosFragment);
                     break;
                 case "Carrito":
                     break;
