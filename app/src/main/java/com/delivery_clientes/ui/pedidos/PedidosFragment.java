@@ -29,6 +29,7 @@ public class PedidosFragment extends Fragment {
     private PedidosAdapter pedidosAdapter;
     private PedidosViewModel pedidosViewModel;
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class PedidosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Aqui va la acción a otro fragmento
+
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_pedidosFragment_to_detalleFragment);
             }
@@ -61,6 +63,8 @@ public class PedidosFragment extends Fragment {
         pedidosViewModel.getPedidosLiveData().observe(getViewLifecycleOwner(), pedidosList -> {
             pedidosAdapter.updateData(pedidosList);
         });
+
+
 
     }
 }

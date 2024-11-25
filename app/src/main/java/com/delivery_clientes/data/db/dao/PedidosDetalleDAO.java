@@ -1,5 +1,6 @@
 package com.delivery_clientes.data.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -22,6 +23,8 @@ public interface PedidosDetalleDAO {
     @Query("SELECT * FROM pedido_detalle WHERE pedido_id = :pedido_id")
     List<PedidoDetalle> obtenerDetallePedidoPorIdPedido(int pedido_id);
 
+    @Query("SELECT * FROM pedido_detalle")
+    LiveData<List<PedidoDetalle>> obtenerDetalleLive();
 
     @Insert
     void insertarPedidoDetalle(PedidoDetalle pedidoDetalle);

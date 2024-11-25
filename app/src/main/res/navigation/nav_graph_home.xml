@@ -27,5 +27,13 @@
     <fragment
         android:id="@+id/detalleFragment"
         android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"
-        android:label="DetalleFragment" />
+        android:label="DetalleFragment" >
+        <action
+            android:id="@+id/action_detalleFragment_to_seguimientoFragment"
+            app:destination="@id/seguimientoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seguimientoFragment"
+        android:name="com.delivery_clientes.ui.pedidos.seguimiento.SeguimientoFragment"
+        android:label="SeguimientoFragment" />
 </navigation>

@@ -2,6 +2,8 @@ package com.delivery_clientes.data.repository;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+
 import com.delivery_clientes.data.db.AppDatabase;
 import com.delivery_clientes.data.db.dao.PedidosDetalleDAO;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
@@ -20,4 +22,9 @@ public class DetalleRepository {
     public List<PedidoDetalle> obtenerPedidoDetalle() {return pedidosDetalleDAO.obtenerTodosPedidoDetalle();}
 
     public void insertarDetallePedido(PedidoDetalle ped) {pedidosDetalleDAO.insertarPedidoDetalle(ped);}
+
+    public LiveData<List<PedidoDetalle>> obtenerDetalleLive(){
+        return pedidosDetalleDAO.obtenerDetalleLive();
+    }
+
 }

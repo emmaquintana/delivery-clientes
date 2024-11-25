@@ -33,9 +33,10 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosV
     @Override
     public void onBindViewHolder(@NonNull PedidosViewHolder holder, int position){
         Pedidos pedido = pedidosList.get(position);
-        holder.idPedido.setText(pedido.getId());
+        holder.idPedido.setText("'" + pedido.getId() + "'");
         holder.estadoPedido.setText(pedido.getEstado());
         holder.fechaPedido.setText(pedido.getFecha_pedido());
+
     }
 
     @Override
@@ -65,6 +66,13 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosV
             idPedido = itemView.findViewById(R.id.textViewPedido);
             fechaPedido = itemView.findViewById(R.id.textViewFechaPed);
             estadoPedido = itemView.findViewById(R.id.textViewEstadoPed);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
     }
 }
