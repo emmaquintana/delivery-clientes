@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -20,13 +21,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Categorias;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.delivery_clientes.ui.carrito.CarritoFragment;
+import com.delivery_clientes.ui.carrito.CarritoViewModel;
 import com.delivery_clientes.ui.home.productos.FiltrosProductosAdapter;
 import com.delivery_clientes.ui.home.productos.ProductosAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
@@ -36,6 +41,7 @@ public class HomeFragment extends Fragment {
     private FiltrosProductosAdapter filtrosProductosAdapter;
     private HomeViewModel homeViewModel;
     private SearchView searchView;
+    private CarritoViewModel carritoViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -45,7 +51,9 @@ public class HomeFragment extends Fragment {
         //Configuracion de RV de productos
         recyclerViewProductos = view.findViewById(R.id.recyclerViewProductos);
         recyclerViewProductos.setLayoutManager(new LinearLayoutManager(getContext()));
-        productosAdapter = new ProductosAdapter(new ArrayList<>());
+
+        carritoViewModel = new ViewModelProvider(requireActivity()).get(CarritoViewModel.class);
+        productosAdapter = new ProductosAdapter(new ArrayList<>(),carritoViewModel);
         recyclerViewProductos.setAdapter(productosAdapter);
 
         //Configuracion de RV de filtros/categorias
@@ -76,6 +84,13 @@ public class HomeFragment extends Fragment {
                 filtrarProductosPorNombre(s);
                 return true;
             }
+        });
+
+        //Navegacion a Carrito
+        ImageButton botonCarrito = view.findViewById(R.id.imageButton);
+        botonCarrito.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView);
+            navController.navigate(R.id.action_homeFragment_to_carritoFragment);
         });
 
         return view;
@@ -127,5 +142,9 @@ public class HomeFragment extends Fragment {
                 productosAdapter.updateData(listaFiltrada);
             });
         }
+    }
+
+    private void enviarDatosAlCarrito(){
+
     }
 }

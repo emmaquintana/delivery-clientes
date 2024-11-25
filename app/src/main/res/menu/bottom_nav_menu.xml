@@ -4,18 +4,18 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/homeicon"
+        android:icon="@drawable/home_icon"
         android:title="@string/title_home"
         />
 
     <item
         android:id="@+id/pedidosFragment"
-        android:icon="@drawable/pedidosicon"
+        android:icon="@drawable/pedidos_icon"
         android:title="@string/title_pedidos" />
 
     <item
         android:id="@+id/profileFragment"
-        android:icon="@drawable/perfilicon"
+        android:icon="@drawable/perfil_icon"
         android:title="@string/title_perfil" />
 
 </menu>

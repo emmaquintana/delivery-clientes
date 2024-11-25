@@ -16,6 +16,12 @@ public interface ProductosDAO {
     @Query("SELECT * FROM productos")
     List<Productos> obtenerProductos();
 
+    @Query("SELECT * FROM productos WHERE id = :producto_id")
+    Productos obtenerProductosPorId(int producto_id);
+
+    @Query("SELECT * FROM productos WHERE id = :producto_id")
+    LiveData<Productos> obtenerProductosLivePorId(int producto_id);
+
     @Query("SELECT * FROM productos WHERE categoria_id = :categoria_id")
     List<Productos> obtenerProductosPorCategoria(int categoria_id);
 
