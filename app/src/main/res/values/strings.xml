@@ -31,6 +31,7 @@
     <string name="title_perfil">Perfil</string>
 
     <string name="carritoImgDesc">Carrito</string>
+    <string name="carritoTotalLabel">Total: </string>
 
 
     <string name="forgottenPWInstructions">Por favor ingrese su direccion de email. Recibirá un link

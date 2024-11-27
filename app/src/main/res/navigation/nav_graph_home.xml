@@ -20,14 +20,24 @@
         android:label="fragment_pedidos"
         tools:layout="@layout/fragment_pedidos" >
         <action
-            android:id="@+id/action_pedidosFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_pedidosFragment_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/carritoFragment"
+        android:name="com.delivery_clientes.ui.carrito.CarritoFragment"
+        android:label="fragment_carrito"
+        tools:layout="@layout/fragment_carrito" />
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"
+        android:label="DetalleFragment"
+        tools:layout="@layout/fragment_pedido_detalle">
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -39,12 +49,8 @@
             app:destination="@id/pedidosFragment" />
     </fragment>
     <fragment
-        android:id="@+id/faqFragment"
-        android:name="com.delivery_clientes.ui.profile.faq.FaqFragment"
-        android:label="fragment_faq"
-        tools:layout="@layout/fragment_faq" >
-        <action
-            android:id="@+id/action_faqFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        android:id="@+id/seguimientoFragment"
+        android:name="com.delivery_clientes.ui.pedidos.seguimiento.SeguimientoFragment"
+        android:label="SeguimientoFragment"
+        tools:layout="@layout/fragment_pedido_seguimiento"/>
 </navigation>

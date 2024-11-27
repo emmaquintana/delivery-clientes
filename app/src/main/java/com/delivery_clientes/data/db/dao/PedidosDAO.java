@@ -37,7 +37,7 @@ public interface PedidosDAO {
     LiveData<List<Pedidos>> obtenerPedidosLive();
 
     @Insert
-    void insertarPedido(Pedidos pedido);
+    long insertarPedido(Pedidos pedido);
 
     @Update
     void actualizarPedido(Pedidos pedido);

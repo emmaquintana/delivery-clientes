@@ -1,5 +1,6 @@
 package com.delivery_clientes.ui.carrito;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,16 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
 
     private List<CarritoItem> carritoList;
     private Map<Integer, Productos> productosMap;
+    private CarritoViewModel carritoViewModel;
 
+    private double total;
 
-    public CarritoAdapter(List<CarritoItem> carritoList){
+    public CarritoAdapter(List<CarritoItem> carritoList, CarritoViewModel carritoViewModel){
         this.carritoList = carritoList;
         this.productosMap = new HashMap<>();
+        this.total = 0;
+        this.carritoViewModel = carritoViewModel;
+        calcularTotal();
     }
 
     @NonNull
@@ -48,6 +54,16 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
             holder.descProducto.setText(producto.getDescripcion());
             holder.precio.setText(String.format("$%.2f", producto.getPrecio()));
             holder.cantidades.setText(String.format("x%d", carritoItem.getCantidad()));
+
+            holder.menos.setOnClickListener(view -> {
+                carritoViewModel.restarCarritoItem(carritoItem.getId_producto());
+            });
+
+            holder.borrar.setOnClickListener(view -> {
+                carritoViewModel.borrarCarritoItem(carritoItem.getId_producto());
+            });
+        } else {
+            Log.d("CarritoAdapter", "Producto no encontrado para el id: " + carritoItem.getId_producto());
         }
         //falta imagen y botones
     }
@@ -57,11 +73,13 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
 
     public void updateData(List<CarritoItem> nuevosCarritosItems){
         this.carritoList = nuevosCarritosItems;
+        calcularTotal();
         notifyDataSetChanged();
     }
 
     public void updateProductos(Map<Integer, Productos> productosMap) {
         this.productosMap = productosMap;
+        calcularTotal();
         notifyDataSetChanged();  // Actualiza el adaptador cuando los productos estén disponibles
     }
 
@@ -87,8 +105,23 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
         }
     }
 
-//    private LiveData<Productos> obtenerProductoDesdeCarrito(CarritoItem carritoItem){
-//        return productosRepository.obtenerProductosLivePorId(carritoItem.getId_producto());
-//    }
+    private void calcularTotal() {
+        total = 0;
+        for (CarritoItem item : carritoList) {
+            Productos producto = productosMap.get(item.getId_producto());
+            if (producto != null) {
+                total += producto.getPrecio() * item.getCantidad(); // Suma el precio por cantidad
+            }
+        }
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
 
 }

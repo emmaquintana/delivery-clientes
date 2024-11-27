@@ -24,7 +24,7 @@
         android:layout_marginEnd="16dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/carritoQuitarProducto"
+        app:layout_constraintEnd_toStartOf="@+id/carritoAgregarProducto"
         app:layout_constraintStart_toEndOf="@+id/imageViewItemCarrito"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Nombre de Producto N" />
@@ -53,7 +53,7 @@
         android:layout_marginBottom="8dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/dividerItemProductos"
-        app:layout_constraintEnd_toStartOf="@+id/carritoQuitarProducto"
+        app:layout_constraintEnd_toStartOf="@+id/carritoAgregarProducto"
         app:layout_constraintTop_toBottomOf="@+id/textViewItemCarrito"
         tools:text="$9999.99" />
 
@@ -68,15 +68,26 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewItemCarrito" />
 
     <ImageButton
-        android:id="@+id/carritoQuitarProducto"
+        android:id="@+id/carritoAgregarProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:padding="3dp"
+        android:layout_marginTop="8dp"
         android:background="@color/md_theme_primaryContainer"
         android:contentDescription="AñadirCarrito"
-        app:layout_constraintBottom_toTopOf="@+id/dividerItemProductos"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:padding="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/mas_icon"
-        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+        app:layout_constraintTop_toBottomOf="@+id/productoCantidadHomeTextView"
+        app:srcCompat="@drawable/mas_icon" />
+
+    <TextView
+        android:id="@+id/productoCantidadHomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewItemCarrito"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

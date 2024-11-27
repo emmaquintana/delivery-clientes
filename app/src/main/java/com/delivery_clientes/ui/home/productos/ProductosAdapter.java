@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
@@ -45,7 +46,20 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
         holder.descProducto.setText(producto.getDescripcion());
         holder.precio.setText(String.format("$%.2f",producto.getPrecio()));
 
-        CarritoItem carritoItem = new CarritoItem(producto.getId());
+//        CarritoItem carritoItem = new CarritoItem(producto.getId());
+
+        //Observacion dinamica para mostrar en home la cantidad de cada producto en el carrito
+        LiveData<List<CarritoItem>> carritoItemsLive = carritoViewModel.getCarritoItems();
+        carritoItemsLive.observeForever(carritoItems -> {
+            if (carritoItems != null) {
+                for (CarritoItem item : carritoItems) {
+                    if (item.getId_producto() == producto.getId()) {
+                        holder.cant.setText(String.valueOf(item.getCantidad())); // Actualiza la cantidad en la vista
+                        break;
+                    }
+                }
+            }
+        });
 
         //Configuracion del boton añadir producto
         holder.imageButton.setOnClickListener(view -> {
@@ -72,6 +86,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
         TextView descProducto;
         TextView precio;
         ImageButton imageButton;
+        TextView cant;
 
         public ProductosViewHolder(@NonNull View itemView){
             super(itemView);
@@ -79,7 +94,8 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
             nombreProducto = itemView.findViewById(R.id.textViewItemCarrito);
             descProducto = itemView.findViewById(R.id.textViewDescItemCarrito);
             precio = itemView.findViewById(R.id.textViewPrecioItemCarrito);
-            imageButton = itemView.findViewById(R.id.carritoQuitarProducto);
+            imageButton = itemView.findViewById(R.id.carritoAgregarProducto);
+            cant = itemView.findViewById(R.id.productoCantidadHomeTextView);
         }
     }
 

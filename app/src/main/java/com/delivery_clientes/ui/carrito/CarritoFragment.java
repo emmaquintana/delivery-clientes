@@ -13,7 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Productos;
@@ -30,7 +33,6 @@ public class CarritoFragment extends Fragment {
     private RecyclerView carritoRecyclerView;
     private CarritoAdapter carritoAdapter;
     private CarritoViewModel carritoViewModel;
-    private ProductosRepository productosRepository;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,31 +46,51 @@ public class CarritoFragment extends Fragment {
         //Inicializa el VM
         carritoViewModel = new ViewModelProvider(requireActivity()).get(CarritoViewModel.class);
 
-        //Inicializa el repo/service
-        productosRepository = new ProductosRepository(requireActivity().getApplication());
-        carritoViewModel.setProductosRepository(productosRepository);
-
         //Inicializa el adaptador y se le pasa el repo
-        carritoAdapter = new CarritoAdapter(new ArrayList<>());
+        carritoAdapter = new CarritoAdapter(new ArrayList<>(),carritoViewModel);
         carritoRecyclerView.setAdapter(carritoAdapter);
 
-        // Observar los cambios en los productos del carrito
+        TextView totalPrecio = view.findViewById(R.id.carritoTotalPrecioTextView);
+        //Se observan los cambios en los productos del carrito
         carritoViewModel.getCarritoItems().observe(getViewLifecycleOwner(), carritoItems -> {
             carritoAdapter.updateData(carritoItems);
             carritoViewModel.observarProductos(carritoItems);  // Actualiza los productos observados
+            actualizarTotal(totalPrecio);
         });
 
         // Observar el mapa de productos
         carritoViewModel.getProductosCache().observe(getViewLifecycleOwner(), productosMap -> {
             carritoAdapter.updateProductos(productosMap);  // Actualiza el adaptador con los productos cargados
+            actualizarTotal(totalPrecio);
         });
 
+        //Navegacion hacia atras
         ImageButton goBack = view.findViewById(R.id.goBackIcon);
         goBack.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView);
             navController.navigateUp();
         });
 
+        //Generacion de alta de pedido
+        Button continuar = view.findViewById(R.id.carritoBotonContinuar);
+        continuar.setOnClickListener(view1 -> {
+            List<CarritoItem> carritoItems = carritoViewModel.getCarritoItems().getValue();
+            double total = carritoAdapter.getTotal();
+            carritoViewModel.registrarPedido(total,carritoItems).observe(getViewLifecycleOwner(), pedidoId ->{
+                if(pedidoId != null && pedidoId > 0){
+                    Toast.makeText(getContext(), "Pedido registrado con ID: " + pedidoId, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Error al registrar el pedido", Toast.LENGTH_SHORT).show();
+                }
+            });
+            carritoViewModel.vaciarCarrito();
+        });
+
         return view;
+    }
+
+    private void actualizarTotal(TextView totalPrecio) {
+        double total = carritoAdapter.getTotal();
+        totalPrecio.setText(String.format("$%.2f", total));
     }
 }

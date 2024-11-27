@@ -25,7 +25,7 @@ public class PedidosRepository {
         return pedidosDAO.obtenerPedidosLive();
     }
 
-    public void insertarPedido(Pedidos ped) {pedidosDAO.insertarPedido(ped);}
+    public long insertarPedido(Pedidos ped) { return pedidosDAO.insertarPedido(ped);}
 
     public void actualizarPedido(Pedidos ped) {pedidosDAO.actualizarPedido(ped);}
 }
