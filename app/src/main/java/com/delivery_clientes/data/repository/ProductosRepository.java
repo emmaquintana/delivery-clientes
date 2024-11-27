@@ -23,8 +23,20 @@ public class ProductosRepository {
         return productosDAO.obtenerProductos();
     }
 
+    public Productos obtenerProductosPorId(int productos_id){
+        return productosDAO.obtenerProductosPorId(productos_id);
+    }
+
+    public LiveData<Productos> obtenerProductosLivePorId(int productos_id){
+        return productosDAO.obtenerProductosLivePorId(productos_id);
+    }
+
     public List<Productos> obtenerProductosPorCategoria(int categoria_id){
         return productosDAO.obtenerProductosPorCategoria(categoria_id);
+    }
+
+    public LiveData<List<Productos>> obtenerProductosLivePorCategoria(int categoria_id){
+        return productosDAO.obtenerProductosLivePorCategoria(categoria_id);
     }
 
     public List<Productos> obtenerProductosPorNombre(String nombre){

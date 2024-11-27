@@ -9,21 +9,26 @@
         android:id="@+id/homeFragment"
         android:name="com.delivery_clientes.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_carritoFragment"
+            app:destination="@id/carritoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pedidosFragment"
         android:name="com.delivery_clientes.ui.pedidos.PedidosFragment"
         android:label="fragment_pedidos"
-        tools:layout="@layout/fragment_pedidos" >
-        <action
-            android:id="@+id/action_pedidosFragment_to_detalleFragment"
-            app:destination="@id/detalleFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_pedidos" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/carritoFragment"
+        android:name="com.delivery_clientes.ui.carrito.CarritoFragment"
+        android:label="fragment_carrito"
+        tools:layout="@layout/fragment_carrito" />
     <fragment
         android:id="@+id/detalleFragment"
         android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"

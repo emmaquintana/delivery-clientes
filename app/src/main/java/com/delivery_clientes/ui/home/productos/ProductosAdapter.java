@@ -1,27 +1,34 @@
 package com.delivery_clientes.ui.home.productos;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.delivery_clientes.ui.carrito.CarritoItem;
+import com.delivery_clientes.ui.carrito.CarritoViewModel;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.ProductosViewHolder> {
 
     private List<Productos> productosList;
+    private CarritoViewModel carritoViewModel;
 
-    public ProductosAdapter(List<Productos> productosList){
+    public ProductosAdapter(List<Productos> productosList, CarritoViewModel carritoViewModel){
         this.productosList = productosList;
+        this.carritoViewModel = carritoViewModel;
     }
 
     @NonNull
@@ -37,6 +44,14 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
         holder.nombreProducto.setText(producto.getNombre());
         holder.descProducto.setText(producto.getDescripcion());
         holder.precio.setText(String.format("$%.2f",producto.getPrecio()));
+
+        CarritoItem carritoItem = new CarritoItem(producto.getId());
+
+        //Configuracion del boton añadir producto
+        holder.imageButton.setOnClickListener(view -> {
+            carritoViewModel.addCarritoItem(producto.getId());
+        });
+
         //Añadir forma de recuperar imagen
     }
 
@@ -50,6 +65,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
         notifyDataSetChanged();
     }
 
+
     public static class ProductosViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
         TextView nombreProducto;
@@ -59,11 +75,11 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
 
         public ProductosViewHolder(@NonNull View itemView){
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageViewItemProductos);
-            nombreProducto = itemView.findViewById(R.id.textViewItemProductos);
-            descProducto = itemView.findViewById(R.id.textViewDescItemProductos);
-            precio = itemView.findViewById(R.id.textViewPrecioItemProductos);
-            imageButton = itemView.findViewById(R.id.imageButtonAddCartItemProductos);
+            imageView = itemView.findViewById(R.id.imageViewItemCarrito);
+            nombreProducto = itemView.findViewById(R.id.textViewItemCarrito);
+            descProducto = itemView.findViewById(R.id.textViewDescItemCarrito);
+            precio = itemView.findViewById(R.id.textViewPrecioItemCarrito);
+            imageButton = itemView.findViewById(R.id.carritoQuitarProducto);
         }
     }
 

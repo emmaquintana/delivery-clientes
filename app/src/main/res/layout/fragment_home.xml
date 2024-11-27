@@ -13,11 +13,12 @@
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="#FFF"
+        android:background="@color/md_theme_background"
         android:contentDescription="@string/carritoImgDesc"
-        android:src="@drawable/carticon"
+        android:src="@drawable/cart_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/searchBarLayout"
@@ -34,13 +35,14 @@
         app:boxCornerRadiusTopStart="25dp"
         app:boxStrokeColor="@color/md_theme_secondaryContainer"
         app:boxStrokeWidth="0.5dp"
-        app:endIconDrawable="@drawable/searchicon"
+        app:endIconDrawable="@drawable/search_icon"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_search_background"
@@ -64,7 +66,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFiltros"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
