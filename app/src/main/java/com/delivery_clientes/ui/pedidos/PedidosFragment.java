@@ -45,7 +45,6 @@ public class PedidosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Aqui va la acción a otro fragmento
-
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_pedidosFragment_to_detalleFragment);
             }

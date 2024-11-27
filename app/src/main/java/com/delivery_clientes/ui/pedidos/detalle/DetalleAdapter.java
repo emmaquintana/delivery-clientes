@@ -17,11 +17,9 @@ import java.util.List;
 public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleViewHolder> {
 
     private List<PedidoDetalle> detalleList;
-    private List<Productos> productosList;
 
-    public DetalleAdapter(List<PedidoDetalle> detalleList, List<Productos> productosList){
+    public DetalleAdapter(List<PedidoDetalle> detalleList){
         this.detalleList = detalleList;
-        this.productosList = productosList;
     }
 
     @NonNull
@@ -34,10 +32,6 @@ public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleV
 
     @Override
     public void onBindViewHolder(@NonNull DetalleViewHolder holder, int position){
-        PedidoDetalle detalle = detalleList.get(position);
-
-        holder.producto.setText(detalle.getProducto_id());
-
     }
 
     @Override
@@ -46,10 +40,6 @@ public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleV
     public void updateData(List<PedidoDetalle> nuevosDetalle){
         detalleList = nuevosDetalle;
         notifyDataSetChanged();
-    }
-
-    public void encontrarProducto(List<Productos> productos){
-        productosList = productos;
     }
 
     public static class DetalleViewHolder extends RecyclerView.ViewHolder{

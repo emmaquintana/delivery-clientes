@@ -66,13 +66,6 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosV
             idPedido = itemView.findViewById(R.id.textViewPedido);
             fechaPedido = itemView.findViewById(R.id.textViewFechaPed);
             estadoPedido = itemView.findViewById(R.id.textViewEstadoPed);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
     }
 }

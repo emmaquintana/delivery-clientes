@@ -28,12 +28,6 @@ public class DetalleFragment extends Fragment {
     private DetalleAdapter detalleAdapter;
     private DetalleViewModel detalleViewModel;
     private Button seguimientoButton;
-    private Pedidos pedido;
-    private TextView idPedido;
-    private TextView negocio;
-    private TextView repartidor;
-    private TextView fecha;
-    private TextView estado;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -43,7 +37,7 @@ public class DetalleFragment extends Fragment {
         recyclerViewDetalle = view.findViewById(R.id.recyclerViewPedidoDetalle);
         recyclerViewDetalle.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        detalleAdapter = new DetalleAdapter(new ArrayList<>(), new ArrayList<>());
+        detalleAdapter = new DetalleAdapter(new ArrayList<>());
         recyclerViewDetalle.setAdapter(detalleAdapter);
 
         return view;
@@ -60,13 +54,6 @@ public class DetalleFragment extends Fragment {
         });
 
         seguimientoButton = view.findViewById(R.id.btnDetSeguimiento);
-//        idPedido = view.findViewById(R.id.txtVwPDpedidoValue);
-//        negocio = view.findViewById(R.id.txtVwPDnegocioValue);
-//        repartidor = view.findViewById(R.id.txtVwPDrepartidorValue);
-//        fecha = view.findViewById(R.id.txtVwPDfechaValue);
-//        estado = view.findViewById(R.id.txtVwPDestadoValue);
-//
-//        pedido.setText(detalleAdapter);
 
         seguimientoButton.setOnClickListener(view1 -> {
             NavController navController = Navigation.findNavController(view);
