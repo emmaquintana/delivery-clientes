@@ -18,7 +18,11 @@
         android:id="@+id/pedidosFragment"
         android:name="com.delivery_clientes.ui.pedidos.PedidosFragment"
         android:label="fragment_pedidos"
-        tools:layout="@layout/fragment_pedidos" />
+        tools:layout="@layout/fragment_pedidos" >
+        <action
+            android:id="@+id/action_pedidosFragment_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
@@ -32,7 +36,8 @@
     <fragment
         android:id="@+id/detalleFragment"
         android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"
-        android:label="DetalleFragment" >
+        android:label="DetalleFragment"
+        tools:layout="@layout/fragment_pedido_detalle">
         <action
             android:id="@+id/action_detalleFragment_to_seguimientoFragment"
             app:destination="@id/seguimientoFragment" />
@@ -40,5 +45,6 @@
     <fragment
         android:id="@+id/seguimientoFragment"
         android:name="com.delivery_clientes.ui.pedidos.seguimiento.SeguimientoFragment"
-        android:label="SeguimientoFragment" />
+        android:label="SeguimientoFragment"
+        tools:layout="@layout/fragment_pedido_seguimiento"/>
 </navigation>
