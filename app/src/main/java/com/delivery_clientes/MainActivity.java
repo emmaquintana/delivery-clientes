@@ -8,7 +8,10 @@ import com.delivery_clientes.data.db.AppDatabase;
 import com.delivery_clientes.data.db.dao.CategoriasDAO;
 import com.delivery_clientes.data.db.entities.Categorias;
 import com.delivery_clientes.data.db.entities.Negocios;
+import com.delivery_clientes.data.db.entities.PedidoDetalle;
+import com.delivery_clientes.data.db.entities.Pedidos;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.delivery_clientes.data.db.entities.Seguimiento;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -75,6 +78,38 @@ public class MainActivity extends AppCompatActivity {
 //        prod2.setCategoria_id(1);
 //        prod2.setNegocio_id(1);
 //
+//
+//        //Pedido
+//        Pedidos ped = new Pedidos();
+//        ped.setCliente_id(2);
+//        ped.setEstado("test3");
+//        ped.setNegocio_id(2);
+//        ped.setRepartidor_id(3);
+//        ped.setFecha_pedido("2024-11-25 18:00:00");
+//
+//        //Pedido-detalle
+//        PedidoDetalle det = new PedidoDetalle();
+//        det.setPedido_id(ped.getId());
+//        det.setCantidad(2);
+//        det.setProducto_id(1);
+//        det.setPrecio_unitario(3000.0);
+//
+//        //Seguimiento
+//        Seguimiento seg = new Seguimiento();
+//        seg.setPedido_id(ped.getId());
+//        seg.setEstado("En espera");
+//        seg.setFecha_actualizacion("2024-11-25 18:00:00");
+//
+//        Seguimiento seg2 = new Seguimiento();
+//        seg2.setPedido_id(ped.getId());
+//        seg2.setEstado("Aceptado");
+//        seg2.setFecha_actualizacion("2024-11-25 19:00:00");
+//
+//        Seguimiento seg3 = new Seguimiento();
+//        seg3.setPedido_id(ped.getId());
+//        seg3.setEstado("Entregado");
+//        seg3.setFecha_actualizacion("2024-11-25 20:30:00");
+//
 //        new Thread(() -> {
 //            AppDatabase db = AppDatabase.getInstance(getApplication());
 //            db.categoriasDAO().insertarCategoria(categoria1);
@@ -84,6 +119,11 @@ public class MainActivity extends AppCompatActivity {
 //            db.negociosDAO().insertarNegocio(negocio1);
 //
 //            db.productosDAO().insertarProducto(prod2);
+//            db.pedidosDAO().insertarPedido(ped);
+//            db.pedidosDetalleDAO().insertarPedidoDetalle(det);
+//            db.seguimientoDAO().insertarSeguimiento(seg);
+//            db.seguimientoDAO().insertarSeguimiento(seg2);
+//            db.seguimientoDAO().insertarSeguimiento(seg3);
 //        }).start();
 
     }

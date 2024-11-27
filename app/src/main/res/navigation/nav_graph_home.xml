@@ -11,8 +11,13 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
+<<<<<<< HEAD
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+=======
+            android:id="@+id/action_homeFragment_to_carritoFragment"
+            app:destination="@id/carritoFragment" />
+>>>>>>> 4e93d189d96a0306796632ee9774bcd2eb1175b1
     </fragment>
     <fragment
         android:id="@+id/pedidosFragment"
@@ -27,6 +32,7 @@
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
         android:label="fragment_profile"
+<<<<<<< HEAD
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
@@ -47,4 +53,24 @@
             android:id="@+id/action_faqFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+=======
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/carritoFragment"
+        android:name="com.delivery_clientes.ui.carrito.CarritoFragment"
+        android:label="fragment_carrito"
+        tools:layout="@layout/fragment_carrito" />
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"
+        android:label="DetalleFragment" >
+        <action
+            android:id="@+id/action_detalleFragment_to_seguimientoFragment"
+            app:destination="@id/seguimientoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seguimientoFragment"
+        android:name="com.delivery_clientes.ui.pedidos.seguimiento.SeguimientoFragment"
+        android:label="SeguimientoFragment" />
+>>>>>>> 4e93d189d96a0306796632ee9774bcd2eb1175b1
 </navigation>
