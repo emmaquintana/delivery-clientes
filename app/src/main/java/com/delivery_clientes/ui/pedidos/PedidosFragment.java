@@ -41,15 +41,6 @@ public class PedidosFragment extends Fragment {
         pedidosAdapter = new PedidosAdapter(new ArrayList<>());
         recyclerViewPedidos.setAdapter(pedidosAdapter);
 
-        pedidosAdapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Aqui va la acción a otro fragmento
-                NavController navController = Navigation.findNavController(view);
-                navController.navigate(R.id.action_pedidosFragment_to_detalleFragment);
-            }
-        });
-
         return view;
     }
 
@@ -62,8 +53,6 @@ public class PedidosFragment extends Fragment {
         pedidosViewModel.getPedidosLiveData().observe(getViewLifecycleOwner(), pedidosList -> {
             pedidosAdapter.updateData(pedidosList);
         });
-
-
 
     }
 }

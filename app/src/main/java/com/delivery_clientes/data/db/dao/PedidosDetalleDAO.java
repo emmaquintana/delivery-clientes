@@ -21,7 +21,7 @@ public interface PedidosDetalleDAO {
 
     //Este devuelve todos los productos incluidos en el pedido
     @Query("SELECT * FROM pedido_detalle WHERE pedido_id = :pedido_id")
-    List<PedidoDetalle> obtenerDetallePedidoPorIdPedido(int pedido_id);
+    LiveData<List<PedidoDetalle>> obtenerDetallePedidoPorIdPedido(int pedido_id);
 
     @Query("SELECT * FROM pedido_detalle")
     LiveData<List<PedidoDetalle>> obtenerDetalleLive();

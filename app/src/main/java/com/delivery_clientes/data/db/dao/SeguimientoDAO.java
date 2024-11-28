@@ -17,7 +17,7 @@ public interface SeguimientoDAO {
     List<Seguimiento> obtenerSeguimientos();
 
     @Query("SELECT * FROM seguimiento WHERE pedido_id = :pedido_id")
-    List<Seguimiento> obtenerSeguimientoDePedidoPorIdPedido(int pedido_id);
+    LiveData<List<Seguimiento>> obtenerSeguimientoDePedidoPorIdPedido(int pedido_id);
 
     @Query("SELECT * FROM seguimiento WHERE pedido_id = :pedido_id AND estado = :estado")
     List<Seguimiento> obtenerSeguimientoDePedidoPorIdAndEstado(int pedido_id, String estado);

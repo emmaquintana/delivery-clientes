@@ -11,6 +11,7 @@ import com.delivery_clientes.data.db.entities.Negocios;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
 import com.delivery_clientes.data.db.entities.Pedidos;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.delivery_clientes.data.db.entities.Repartidores;
 import com.delivery_clientes.data.db.entities.Seguimiento;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -110,22 +111,32 @@ public class MainActivity extends AppCompatActivity {
 //        seg3.setEstado("Entregado");
 //        seg3.setFecha_actualizacion("2024-11-25 20:30:00");
 //
+//
+//
+//        Negocios negocio1 = new Negocios();
+//        negocio1.setNombre("Negocio1");
+//        negocio1.setCuit("123456");
+//        negocio1.setEmail("negocio@email.com");
+//        negocio1.setEstado(1);
+//        negocio1.setDireccion_id(1);
+//        negocio1.setTelefono("385123456");
+//
 //        new Thread(() -> {
 //            AppDatabase db = AppDatabase.getInstance(getApplication());
-//            db.categoriasDAO().insertarCategoria(categoria1);
-//            db.categoriasDAO().insertarCategoria(categoria2);
-//            db.categoriasDAO().insertarCategoria(categoria3);
-//
+////            db.categoriasDAO().insertarCategoria(categoria1);
+////            db.categoriasDAO().insertarCategoria(categoria2);
+////            db.categoriasDAO().insertarCategoria(categoria3);
+////
 //            db.negociosDAO().insertarNegocio(negocio1);
-//
-//            db.productosDAO().insertarProducto(prod2);
-//            db.pedidosDAO().insertarPedido(ped);
-//            db.pedidosDetalleDAO().insertarPedidoDetalle(det);
-//            db.seguimientoDAO().insertarSeguimiento(seg);
-//            db.seguimientoDAO().insertarSeguimiento(seg2);
-//            db.seguimientoDAO().insertarSeguimiento(seg3);
+////
+////            db.productosDAO().insertarProducto(prod2);
+////            db.pedidosDAO().insertarPedido(ped);
+////            db.pedidosDetalleDAO().insertarPedidoDetalle(det);
+////            db.seguimientoDAO().insertarSeguimiento(seg);
+////            db.seguimientoDAO().insertarSeguimiento(seg2);
+////            db.seguimientoDAO().insertarSeguimiento(seg3);
 //        }).start();
-
+//
     }
 
 }

@@ -1,5 +1,6 @@
 package com.delivery_clientes.data.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -16,7 +17,7 @@ public interface RepartidoresDAO {
     List<Repartidores> obtenerRepartidores();
 
     @Query("SELECT * FROM repartidores WHERE id = :repartidor_id")
-    Repartidores obtenerRepartidorPorId(int repartidor_id);
+    LiveData<Repartidores> obtenerRepartidorPorId(int repartidor_id);
 
     @Query("SELECT * FROM repartidores WHERE apellido = :apellido AND nombre = :nombre")
     List<Repartidores> obtenerRepartidoresPorApellidoAndNombre(String apellido, String nombre);

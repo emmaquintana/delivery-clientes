@@ -14,15 +14,13 @@ import java.util.List;
 public class SeguimientoViewModel extends AndroidViewModel {
 
     private final SeguimientoRepository seguimientoRepository;
-    private final LiveData<List<Seguimiento>> seguimientoLiveData;
 
     public SeguimientoViewModel(@NonNull Application application){
         super(application);
         seguimientoRepository = new SeguimientoRepository(application);
-        seguimientoLiveData = seguimientoRepository.obtenerSeguimientoLive();
     }
 
-    public LiveData<List<Seguimiento>> getSeguimientoLiveData(){
-        return seguimientoLiveData;
+    public LiveData<List<Seguimiento>> getSeguimientoLiveData(int id){
+        return seguimientoRepository.obtenerSeguimientoLive(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.delivery_clientes.data.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -16,7 +17,7 @@ public interface NegociosDAO {
     List<Negocios> obtenerNegocios();
 
     @Query("SELECT * FROM negocios WHERE id = :negocio_id")
-    Negocios obtenerNegocioPorId(int negocio_id);
+    LiveData<Negocios> obtenerNegocioPorId(int negocio_id);
 
     @Query("SELECT * FROM negocios WHERE email = :email")
     Negocios obtenerNegocioPorEmail(String email);

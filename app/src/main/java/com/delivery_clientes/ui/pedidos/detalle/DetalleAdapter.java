@@ -12,13 +12,17 @@ import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
 import com.delivery_clientes.data.db.entities.Productos;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleViewHolder> {
 
-    private List<PedidoDetalle> detalleList;
+    private List<HashMap<String, Object>> detalleList;
+    private double total;
 
-    public DetalleAdapter(List<PedidoDetalle> detalleList){
+    public DetalleAdapter(List<HashMap<String, Object>> detalleList){
+        this.total = 0;
         this.detalleList = detalleList;
     }
 
@@ -32,13 +36,18 @@ public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleV
 
     @Override
     public void onBindViewHolder(@NonNull DetalleViewHolder holder, int position){
+        HashMap<String, Object> pedidoHash = detalleList.get(position);
+        holder.cantidad.setText(pedidoHash.get("cant") + "x");
+        holder.producto.setText(" " + pedidoHash.get("producto"));
+        holder.precio.setText("$" + pedidoHash.get("precio"));
     }
 
     @Override
     public int getItemCount() {return detalleList.size();}
 
-    public void updateData(List<PedidoDetalle> nuevosDetalle){
+    public void updateData(List<HashMap<String, Object>> nuevosDetalle){
         detalleList = nuevosDetalle;
+        calcularTotal();
         notifyDataSetChanged();
     }
 
@@ -54,4 +63,15 @@ public class DetalleAdapter extends RecyclerView.Adapter<DetalleAdapter.DetalleV
             precio = itemView.findViewById(R.id.txtVwDetItemPrecio);
         }
     }
+
+    public void calcularTotal(){
+        total = 0;
+        for (HashMap<String, Object> prod : detalleList){
+            int cant = (int) prod.get("cant");
+            double precio = (double) prod.get("precio");
+            total = total + (precio * cant);
+        }
+    }
+
+    public double getTotal(){return total;}
 }
