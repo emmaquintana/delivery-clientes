@@ -41,7 +41,6 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-//        mViewModel.register(new Usuario("usuario@email.com","usuario"));
 
         //Controla si ya se inicio sesion
         if (mViewModel.isLoggedIn()) {

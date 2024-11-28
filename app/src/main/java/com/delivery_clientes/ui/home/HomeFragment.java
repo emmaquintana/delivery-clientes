@@ -13,25 +13,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Categorias;
 import com.delivery_clientes.data.db.entities.Productos;
-import com.delivery_clientes.ui.carrito.CarritoFragment;
 import com.delivery_clientes.ui.carrito.CarritoViewModel;
 import com.delivery_clientes.ui.home.productos.FiltrosProductosAdapter;
 import com.delivery_clientes.ui.home.productos.ProductosAdapter;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
@@ -144,7 +137,4 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void enviarDatosAlCarrito(){
-
-    }
 }

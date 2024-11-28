@@ -1,13 +1,11 @@
 package com.delivery_clientes.ui.carrito;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
 import com.delivery_clientes.data.db.entities.Pedidos;

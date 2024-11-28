@@ -9,7 +9,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.delivery_clientes.R;
-import com.delivery_clientes.data.db.entities.Productos;
-import com.delivery_clientes.data.repository.ProductosRepository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class CarritoFragment extends Fragment {

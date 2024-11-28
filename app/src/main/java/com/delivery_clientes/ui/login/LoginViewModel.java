@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Room;
 
 import com.delivery_clientes.data.db.AppDatabase;
@@ -15,7 +14,6 @@ import com.delivery_clientes.utils.SingleLiveEvent;
 public class LoginViewModel extends AndroidViewModel {
 
     private AppDatabase db;
-//    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<LoginResult>();
     private SingleLiveEvent<LoginResult> loginResult = new SingleLiveEvent<>();
 
     public LoginViewModel(Application application){
@@ -24,10 +22,6 @@ public class LoginViewModel extends AndroidViewModel {
                 .fallbackToDestructiveMigration()
                 .build();
     }
-
-//    public MutableLiveData<LoginResult> getLoginResult(){
-//        return loginResult;
-//    }
 
     public SingleLiveEvent<LoginResult> getLoginResult() {
         return loginResult;

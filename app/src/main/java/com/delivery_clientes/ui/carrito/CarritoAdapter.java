@@ -9,12 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Productos;
-import com.delivery_clientes.data.repository.ProductosRepository;
 
 import java.util.HashMap;
 import java.util.List;

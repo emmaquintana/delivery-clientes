@@ -6,12 +6,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Categorias;
-import com.delivery_clientes.ui.home.HomeViewModel;
 
 import java.util.List;
 
