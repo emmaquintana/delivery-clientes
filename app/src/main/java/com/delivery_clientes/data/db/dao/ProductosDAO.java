@@ -28,7 +28,7 @@ public interface ProductosDAO {
     @Query("SELECT * FROM productos WHERE nombre = :nombre")
     List<Productos> obtenerProductosPorNombre(String nombre);
 
-    @Query("SELECT * FROM productos")
+    @Query("SELECT * FROM productos WHERE stock > 0")
     LiveData<List<Productos>> obtenerProductosLive();
 
     @Query("SELECT * FROM productos WHERE categoria_id = :categoria_id")

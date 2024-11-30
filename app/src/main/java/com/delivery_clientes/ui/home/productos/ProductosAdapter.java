@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -17,10 +16,8 @@ import com.delivery_clientes.data.db.entities.Productos;
 import com.delivery_clientes.ui.carrito.CarritoItem;
 import com.delivery_clientes.ui.carrito.CarritoViewModel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.ProductosViewHolder> {
 
@@ -45,8 +42,6 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
         holder.nombreProducto.setText(producto.getNombre());
         holder.descProducto.setText(producto.getDescripcion());
         holder.precio.setText(String.format("$%.2f",producto.getPrecio()));
-
-//        CarritoItem carritoItem = new CarritoItem(producto.getId());
 
         //Observacion dinamica para mostrar en home la cantidad de cada producto en el carrito
         LiveData<List<CarritoItem>> carritoItemsLive = carritoViewModel.getCarritoItems();

@@ -9,7 +9,6 @@
         android:id="@+id/textViewSegTitleEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Estado: "
         android:textSize="20sp"
@@ -18,11 +17,13 @@
 
     <TextView
         android:id="@+id/textViewSegEstado"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:text="Status"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSegFecha"
         app:layout_constraintStart_toEndOf="@+id/textViewSegTitleEstado"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,8 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="24dp"
         android:text="DD/MM/AAAA - HH:MM"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/dividerItemSeguimiento"

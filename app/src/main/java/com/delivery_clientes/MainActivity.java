@@ -79,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
 //        prod2.setCategoria_id(1);
 //        prod2.setNegocio_id(1);
 //
+//        Productos prod3 = new Productos();
+//        prod3.setNombre("Producto 3");
+//        prod3.setDescripcion("Descripcion 3");
+//        prod3.setPrecio(5000);
+//        prod3.setStock(50);
+//        prod3.setCategoria_id(2);
+//        prod3.setNegocio_id(1);
+//
 //
 //        //Pedido
 //        Pedidos ped = new Pedidos();
@@ -123,20 +131,20 @@ public class MainActivity extends AppCompatActivity {
 //
 //        new Thread(() -> {
 //            AppDatabase db = AppDatabase.getInstance(getApplication());
-////            db.categoriasDAO().insertarCategoria(categoria1);
-////            db.categoriasDAO().insertarCategoria(categoria2);
-////            db.categoriasDAO().insertarCategoria(categoria3);
-////
-//            db.negociosDAO().insertarNegocio(negocio1);
-////
-////            db.productosDAO().insertarProducto(prod2);
-////            db.pedidosDAO().insertarPedido(ped);
-////            db.pedidosDetalleDAO().insertarPedidoDetalle(det);
-////            db.seguimientoDAO().insertarSeguimiento(seg);
-////            db.seguimientoDAO().insertarSeguimiento(seg2);
-////            db.seguimientoDAO().insertarSeguimiento(seg3);
-//        }).start();
+//            db.categoriasDAO().insertarCategoria(categoria1);
+//            db.categoriasDAO().insertarCategoria(categoria2);
+//            db.categoriasDAO().insertarCategoria(categoria3);
 //
+//            db.negociosDAO().insertarNegocio(negocio1);
+//
+//            db.productosDAO().insertarProducto(prod3);
+//            db.pedidosDAO().insertarPedido(ped);
+//            db.pedidosDetalleDAO().insertarPedidoDetalle(det);
+//            db.seguimientoDAO().insertarSeguimiento(seg);
+//            db.seguimientoDAO().insertarSeguimiento(seg2);
+//            db.seguimientoDAO().insertarSeguimiento(seg3);
+//        }).start();
+
     }
 
 }
