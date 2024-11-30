@@ -97,8 +97,15 @@ public class DetalleFragment extends Fragment {
             }
         });
 
+        detalleViewModel.getSeguimiento(id).observe(getViewLifecycleOwner(), seguimiento -> {
+            if (seguimiento != null){
+                estado.setText(seguimiento.getEstado());
+            } else {
+                estado.setText(estadoPed);
+            }
+        });
+
         fecha.setText(fechaPed);
-        estado.setText(estadoPed);
 
         seguimientoButton = view.findViewById(R.id.btnDetSeguimiento);
 
