@@ -14,12 +14,16 @@ import com.delivery_clientes.data.db.entities.Clientes;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
 import com.delivery_clientes.data.db.entities.Pedidos;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.delivery_clientes.data.db.entities.Seguimiento;
 import com.delivery_clientes.data.repository.ClientesRepository;
 import com.delivery_clientes.data.repository.DetalleRepository;
 import com.delivery_clientes.data.repository.PedidosRepository;
 import com.delivery_clientes.data.repository.ProductosRepository;
+import com.delivery_clientes.data.repository.SeguimientoRepository;
+import com.delivery_clientes.utils.FechaUtils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,12 +38,12 @@ public class CarritoViewModel extends AndroidViewModel {
     private PedidosRepository pedidosRepository;
     private DetalleRepository detalleRepository;
     private ClientesRepository clientesRepository;
+    private SeguimientoRepository seguimientoRepository;
 
     private MutableLiveData<List<CarritoItem>> carritoItems = new MutableLiveData<>(new ArrayList<>());
     private MutableLiveData<Map<Integer, Productos>> productosCache = new MutableLiveData<>(new HashMap<>());
 
     private String email;
-    private final LiveData<Clientes> clientesLiveData;
 
     public CarritoViewModel(@NonNull Application application) {
         super(application);
@@ -48,11 +52,7 @@ public class CarritoViewModel extends AndroidViewModel {
         pedidosRepository = new PedidosRepository(application);
         detalleRepository = new DetalleRepository(application);
         clientesRepository = new ClientesRepository(application);
-        clientesLiveData = clientesRepository.obtenerClientesPorEmailLive(email);
-    }
-
-    public LiveData<Clientes> getClientesLiveData() {
-        return clientesLiveData;
+        seguimientoRepository = new SeguimientoRepository(application);
     }
 
     public LiveData<List<CarritoItem>> getCarritoItems() {
@@ -151,14 +151,13 @@ public class CarritoViewModel extends AndroidViewModel {
             return;
         }
 
-//         Se intenta obtener el negocio_id desde el primer producto válido en el carrito
-//        Map<Integer, Productos> productosMap = productosCache.getValue();
         if (productosMap == null || productosMap.isEmpty()) {
             Log.d("registrarPedido", "No hay productos en caché");
             pedidoIdLiveData.postValue(null); // Retorna nulo si no hay productos en caché
             return;
         }
 
+        //Se intenta obtener el negocio_id desde el primer producto válido en el carrito
         int negocioId = -1; // Valor predeterminado en caso de error
         for (CarritoItem item : carritoItems) {
             Productos producto = productosMap.get(item.getId_producto());
@@ -178,8 +177,8 @@ public class CarritoViewModel extends AndroidViewModel {
         Log.d("registrarPedido", "Registrando pedido para el cliente ID: " + clienteId);
         // Se crea el pedido
         Pedidos nuevoPedido = new Pedidos(
-                clienteId, // Usar el clienteId obtenido
-                negocioId,
+                clienteId, //Recibido por param, obtenido mediante el email en cuentasusuarios
+                negocioId, //Obtenido desde el listado de productos en el carrito
                 1, // Aquí va el id del repartidor
                 new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date()),
                 "Pendiente"
@@ -206,8 +205,19 @@ public class CarritoViewModel extends AndroidViewModel {
             }
 
         }
+        cargarSeguimiento(pedidoId);
+
         Log.d("registrarPedido", "Pedido registrado con ID: " + pedidoId);
         pedidoIdLiveData.postValue(pedidoId);
+
+    }
+
+    private void cargarSeguimiento(long pedidoId){
+        String fechaActual = FechaUtils.obtenerFechaActual();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            Seguimiento seguimiento = new Seguimiento((int)pedidoId,"Pendiente",fechaActual);
+            seguimientoRepository.insertarSeguimiento(seguimiento);
+        });
 
     }
 

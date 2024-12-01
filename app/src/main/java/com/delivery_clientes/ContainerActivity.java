@@ -8,6 +8,7 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ContainerActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class ContainerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidThreeTen.init(this);
         setContentView(R.layout.activity_container);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);

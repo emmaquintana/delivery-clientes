@@ -54,4 +54,6 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    implementation("com.jakewharton.threetenabp:threetenabp:1.4.4")
 }

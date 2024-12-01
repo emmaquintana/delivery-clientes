@@ -84,18 +84,11 @@ public class CarritoFragment extends Fragment {
                 if (id != null){
                     Toast.makeText(getContext(), "Pedido registrado con ID: " + id, Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.e("registrarPedido", "Error al registrar el pedido: " + id);
+                    Log.e("registrarPedido", "Error al registrar el pedido: id = " + id);
+                    Toast.makeText(getContext(), "Error al registrar el pedido", Toast.LENGTH_SHORT).show();
                 }
             });
 
-//            carritoViewModel.registrarPedido(total,carritoItems).observe(getViewLifecycleOwner(), pedidoId ->{
-//                if(pedidoId != null && pedidoId > 0){
-//                    Toast.makeText(getContext(), "Pedido registrado con ID: " + pedidoId, Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Log.e("registrarPedido", "Error al registrar el pedido: " + pedidoId);
-//                    Toast.makeText(getContext(), "Error al registrar el pedido", Toast.LENGTH_SHORT).show();
-//                }
-//            });
             carritoViewModel.vaciarCarrito();
         });
 
