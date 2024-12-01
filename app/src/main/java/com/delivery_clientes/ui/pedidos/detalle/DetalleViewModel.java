@@ -82,7 +82,7 @@ public class DetalleViewModel extends AndroidViewModel {
         return productosRepository.obtenerProductosLivePorId(id);
     }
 
-    public LiveData<Seguimiento> getSeguimiento(int pedidoId){
+    public LiveData<Seguimiento> getSeguimiento(long pedidoId){
        return seguimientoRepository.obtenerSeguimientoEstadoDePedidoPorIdPedido(pedidoId);
     }
 

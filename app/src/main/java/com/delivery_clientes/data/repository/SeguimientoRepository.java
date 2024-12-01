@@ -29,7 +29,7 @@ public class SeguimientoRepository {
 
     public void actualizarSeguimiento(Seguimiento seg){seguimientoDAO.actualizarSeguimiento(seg);}
 
-    public LiveData<Seguimiento> obtenerSeguimientoEstadoDePedidoPorIdPedido(int pedidoId){
+    public LiveData<Seguimiento> obtenerSeguimientoEstadoDePedidoPorIdPedido(long pedidoId){
         return seguimientoDAO.obtenerSeguimientoEstadoDePedidoPorIdPedido(pedidoId);
     }
 

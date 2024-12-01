@@ -26,7 +26,7 @@ public interface SeguimientoDAO {
     LiveData<List<Seguimiento>> obtenerSeguimientoLive();
 
     @Query("SELECT * FROM seguimiento WHERE pedido_id = :pedido_id ORDER BY id DESC LIMIT 1")
-    LiveData<Seguimiento> obtenerSeguimientoEstadoDePedidoPorIdPedido(int pedido_id);
+    LiveData<Seguimiento> obtenerSeguimientoEstadoDePedidoPorIdPedido(long pedido_id);
 
     @Insert
     void insertarSeguimiento(Seguimiento seguimiento);
