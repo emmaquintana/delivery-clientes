@@ -13,7 +13,7 @@ public interface UsuariosDAO {
     Usuario login(String email, String password);
 
     @Insert
-    void insertUsuario(Usuario usuario);
+    long insertUsuario(Usuario usuario);
 
     @Query("SELECT * FROM usuarios WHERE email = :email")
     Usuario findUserByUsername(String email);

@@ -20,7 +20,7 @@ public class SeguimientoViewModel extends AndroidViewModel {
         seguimientoRepository = new SeguimientoRepository(application);
     }
 
-    public LiveData<List<Seguimiento>> getSeguimientoLiveData(int id){
+    public LiveData<List<Seguimiento>> getSeguimientoLiveData(long id){
         return seguimientoRepository.obtenerSeguimientoLive(id);
     }
 }

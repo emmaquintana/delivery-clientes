@@ -43,7 +43,7 @@ public class SeguimientoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        int pedidoId = bundle.getInt("pedidoId");
+        long pedidoId = bundle.getLong("pedidoId");
 
         seguimientoViewModel = new ViewModelProvider(this).get(SeguimientoViewModel.class);
 

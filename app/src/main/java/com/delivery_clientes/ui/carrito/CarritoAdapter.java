@@ -61,7 +61,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
                 carritoViewModel.borrarCarritoItem(carritoItem.getId_producto());
             });
         } else {
-            Log.d("CarritoAdapter", "Producto no encontrado para el id: " + carritoItem.getId_producto());
+            Log.d("CarritoAdapter", "Producto no encontrado en cache para el id: " + carritoItem.getId_producto());
         }
         //falta imagen y botones
     }

@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }, SPLASH_SCREEN_TIMEOUT);
 
-//
-//        //Eliminar posteriormente
-//
-//        //Categorias
+
+//        Eliminar posteriormente
+
+////        //Categorias
 //        Categorias categoria1 = new Categorias();
 //        categoria1.setNombre("Categoria 1");
 //
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //        prod1.setCategoria_id(1);
 //        prod1.setNegocio_id(1);
 //
-
+//
 //        Productos prod2 = new Productos();
 //        prod2.setNombre("Producto 2");
 //        prod2.setDescripcion("Descripcion 2");
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 //        prod3.setStock(50);
 //        prod3.setCategoria_id(2);
 //        prod3.setNegocio_id(1);
-//
+
 //
 //        //Pedido
 //        Pedidos ped = new Pedidos();
@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
 //
 //            db.negociosDAO().insertarNegocio(negocio1);
 //
+//            db.productosDAO().insertarProducto(prod1);
+//            db.productosDAO().insertarProducto(prod2);
 //            db.productosDAO().insertarProducto(prod3);
 //            db.pedidosDAO().insertarPedido(ped);
 //            db.pedidosDetalleDAO().insertarPedidoDetalle(det);

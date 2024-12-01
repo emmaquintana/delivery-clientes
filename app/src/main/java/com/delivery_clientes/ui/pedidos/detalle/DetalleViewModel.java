@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.delivery_clientes.data.db.entities.Negocios;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
@@ -37,7 +36,7 @@ public class DetalleViewModel extends AndroidViewModel {
         productosRepository = new ProductosRepository(application);
     }
 
-    public LiveData<List<HashMap<String, Object>>> getDetalleLiveData(int id){
+    public LiveData<List<HashMap<String, Object>>> getDetalleLiveData(long id){
         MediatorLiveData<List<HashMap<String, Object>>> detalleLive = new MediatorLiveData<>();
 
         LiveData<List<PedidoDetalle>> lista = detalleRepository.obtenerDetalleLive(id);

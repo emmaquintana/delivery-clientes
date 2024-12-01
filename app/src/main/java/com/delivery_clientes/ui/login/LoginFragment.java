@@ -69,12 +69,22 @@ public class LoginFragment extends Fragment {
 
             //Login exitoso
             if(loginResult.isSuccess()){
-                Toast.makeText(getContext(),loginResult.getError(), Toast.LENGTH_SHORT).show();
-                //Navegacion a home
-                NavController navController = Navigation.findNavController(view);
-                if (navController.getCurrentDestination().getId() != R.id.homeFragment) {
-                    navController.navigate(R.id.action_loginFragment_to_containerActivity);
-                }
+
+                mViewModel.getClienteIdLiveData().observe(getViewLifecycleOwner(), clienteId -> {
+                    if (clienteId == null) return;
+                    if(clienteId == -1){
+                        Toast.makeText(getContext(),"Cliente inexistente, id = -1", Toast.LENGTH_SHORT).show();
+                    } else if (clienteId == 0) {
+                        //Agregar navegacion a alta de cliente
+                    } else {
+                        Toast.makeText(getContext(),loginResult.getError(), Toast.LENGTH_SHORT).show();
+                        //Navegacion a home
+                        NavController navController = Navigation.findNavController(view);
+                        if (navController.getCurrentDestination().getId() != R.id.homeFragment) {
+                            navController.navigate(R.id.action_loginFragment_to_containerActivity);
+                        }
+                    }
+                });
 
             //Login fallido
             } else {

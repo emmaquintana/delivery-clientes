@@ -21,7 +21,7 @@ public class SeguimientoRepository {
 
     public List<Seguimiento> obtenerSeguimiento() {return seguimientoDAO.obtenerSeguimientos();}
 
-    public LiveData<List<Seguimiento>> obtenerSeguimientoLive(int pedidoId){
+    public LiveData<List<Seguimiento>> obtenerSeguimientoLive(long pedidoId){
         return seguimientoDAO.obtenerSeguimientoDePedidoPorIdPedido(pedidoId);
     }
 

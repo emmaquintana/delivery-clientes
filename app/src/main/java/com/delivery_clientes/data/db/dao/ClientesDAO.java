@@ -1,5 +1,6 @@
 package com.delivery_clientes.data.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -21,9 +22,11 @@ public interface ClientesDAO {
     @Query("SELECT * FROM clientes WHERE email = :email")
     Clientes obtenerClientePorEmail(String email);
 
+    @Query("SELECT * FROM clientes WHERE email = :email")
+    LiveData<Clientes> obtenerClientePorEmailLive(String email);
 
     @Insert
-    void insertarCliente(Clientes cliente);
+    long insertarCliente(Clientes cliente);
 
     @Update
     void actualizarCliente(Clientes cliente);

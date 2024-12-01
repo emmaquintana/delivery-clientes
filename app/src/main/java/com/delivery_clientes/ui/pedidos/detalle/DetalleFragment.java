@@ -58,7 +58,7 @@ public class DetalleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        int id = bundle.getInt("pedidoId");
+        long id = bundle.getLong("pedidoId");
         int negocioId = bundle.getInt("negocio");
         int repartidorId = bundle.getInt("repartidor");
         String fechaPed = bundle.getString("fecha");

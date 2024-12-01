@@ -65,14 +65,14 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosV
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
-                    int id = pedidosList.get(position).getId();
+                    long id = pedidosList.get(position).getId();
                     int negocio = pedidosList.get(position).getNegocio_id();
                     int repartidor = pedidosList.get(position).getRepartidor_id();
                     String fecha = pedidosList.get(position).getFecha_pedido();
                     String estado = pedidosList.get(position).getEstado();
                     NavController navController = Navigation.findNavController(view);
                     Bundle bundle = new Bundle();
-                    bundle.putInt("pedidoId", id);
+                    bundle.putLong("pedidoId", id);
                     bundle.putInt("negocio", negocio);
                     bundle.putInt("repartidor", repartidor);
                     bundle.putString("fecha", fecha);
