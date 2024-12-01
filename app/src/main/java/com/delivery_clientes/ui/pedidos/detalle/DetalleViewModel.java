@@ -11,10 +11,12 @@ import com.delivery_clientes.data.db.entities.Negocios;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
 import com.delivery_clientes.data.db.entities.Productos;
 import com.delivery_clientes.data.db.entities.Repartidores;
+import com.delivery_clientes.data.db.entities.Seguimiento;
 import com.delivery_clientes.data.repository.DetalleRepository;
 import com.delivery_clientes.data.repository.NegociosRepository;
 import com.delivery_clientes.data.repository.ProductosRepository;
 import com.delivery_clientes.data.repository.RepartidoresRepository;
+import com.delivery_clientes.data.repository.SeguimientoRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,7 @@ public class DetalleViewModel extends AndroidViewModel {
     private final NegociosRepository negociosRepository;
     private final RepartidoresRepository repartidoresRepository;
     private final ProductosRepository productosRepository;
+    private final SeguimientoRepository seguimientoRepository;
     private Double total = 0.0;
 
     public DetalleViewModel(@NonNull Application application){
@@ -34,6 +37,7 @@ public class DetalleViewModel extends AndroidViewModel {
         negociosRepository = new NegociosRepository(application);
         repartidoresRepository = new RepartidoresRepository(application);
         productosRepository = new ProductosRepository(application);
+        seguimientoRepository = new SeguimientoRepository(application);
     }
 
     public LiveData<List<HashMap<String, Object>>> getDetalleLiveData(long id){
@@ -76,6 +80,10 @@ public class DetalleViewModel extends AndroidViewModel {
 
     public LiveData<Productos> getProducto(int id){
         return productosRepository.obtenerProductosLivePorId(id);
+    }
+
+    public LiveData<Seguimiento> getSeguimiento(int pedidoId){
+       return seguimientoRepository.obtenerSeguimientoEstadoDePedidoPorIdPedido(pedidoId);
     }
 
     public Double getTotal(){ return this.total;}
