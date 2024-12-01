@@ -18,8 +18,15 @@
         <action
             android:id="@+id/action_loginFragment_to_containerActivity"
             app:destination="@id/containerActivity" />
+        <action
+            android:id="@+id/action_loginFragment_to_crearPerfilFragment"
+            app:destination="@id/crearPerfilFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/crearPerfilFragment"
+        android:name="com.delivery_clientes.ui.profile.CrearPerfilFragment"
+        android:label="CrearPerfilFragment"
+        tools:layout="@layout/fragment_crear_perfil"/>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.delivery_clientes.ui.register.SignUpFragment"

@@ -1,5 +1,6 @@
 package com.delivery_clientes.ui.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.delivery_clientes.LoginActivity;
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.AppDatabase;
+import com.delivery_clientes.ui.login.LoginViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -78,6 +82,9 @@ public class ProfileFragment extends Fragment {
 
         listView.setAdapter(adapter);
 
+        LoginViewModel loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+
+
         // Maneja clics en las opciones del ListView
         listView.setOnItemClickListener((parent, itemView, position, id) -> {
             String selectedItem = items[position];
@@ -96,31 +103,17 @@ public class ProfileFragment extends Fragment {
                     navController.navigate(R.id.action_profileFragment_to_faqFragment);
                     break;
                 case "Cerrar sesión":
+                    // Cerrar sesión
+                    loginViewModel.logout();
+
+                    // Navegar a la actividad de Login
+                    Intent intent = new Intent(requireContext(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Elimina el stack de actividades
+                    startActivity(intent);
+
+                    // Finaliza la actividad actual
+                    requireActivity().finish();
                     break;
-            }
-        });
-
-        AppDatabase db = AppDatabase.getInstance(requireContext());
-        profileViewModel = new ProfileViewModel(db);
-
-        // Obtener instancia de la base de datos
-        AppDatabase database = AppDatabase.getInstance(requireContext());
-
-        // Crear el ViewModel directamente
-        profileViewModel = new ProfileViewModel(database);
-
-        // Cargar datos del cliente (por ejemplo, con un ID 1)
-        profileViewModel.cargarClientePorId(1);
-
-        // Observar el LiveData del cliente
-        profileViewModel.getCliente().observe(getViewLifecycleOwner(), cliente -> {
-            if (cliente != null) {
-                // Actualiza la UI con los datos del cliente
-                TextView username = view.findViewById(R.id.txt_username);
-                username.setText(profileViewModel.getCliente().getValue().getNombre());
-
-                // Obtiene la dirección del cliente y en base a ello establece su provincia y ciudad
-                // ...
             }
         });
     }

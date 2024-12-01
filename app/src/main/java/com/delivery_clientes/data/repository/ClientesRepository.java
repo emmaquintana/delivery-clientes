@@ -1,37 +1,13 @@
 package com.delivery_clientes.data.repository;
 
-<<<<<<< HEAD
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-=======
 import android.app.Application;
-
 import androidx.lifecycle.LiveData;
->>>>>>> ba1bbd8f38f1d0d05517c096e86ff68ab8ec2828
-
 import com.delivery_clientes.data.db.AppDatabase;
 import com.delivery_clientes.data.db.dao.ClientesDAO;
 import com.delivery_clientes.data.db.entities.Clientes;
 
-<<<<<<< HEAD
-import java.util.concurrent.Executors;
-
-public class ClientesRepository {
-    private final ClientesDAO clientesDAO;
-
-    public ClientesRepository(AppDatabase db) {
-        clientesDAO = db.clientesDAO();
-    }
-
-    public LiveData<Clientes> obtenerClientePorId(int idClientes) {
-        MutableLiveData<Clientes> clienteLiveData = new MutableLiveData<>();
-        Executors.newSingleThreadExecutor().execute(() -> {
-            clienteLiveData.postValue(clientesDAO.obtenerClientePorId(idClientes));
-        });
-        return clienteLiveData;
-    }
-}
-=======
 import java.util.List;
 
 public class ClientesRepository {
@@ -67,4 +43,3 @@ public class ClientesRepository {
         clientesDAO.actualizarCliente(cliente);
     }
 }
->>>>>>> ba1bbd8f38f1d0d05517c096e86ff68ab8ec2828

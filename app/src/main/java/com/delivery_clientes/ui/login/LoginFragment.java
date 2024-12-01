@@ -74,8 +74,12 @@ public class LoginFragment extends Fragment {
                     if (clienteId == null) return;
                     if(clienteId == -1){
                         Toast.makeText(getContext(),"Cliente inexistente, id = -1", Toast.LENGTH_SHORT).show();
+                        NavController navController = Navigation.findNavController(view);
+                        navController.navigate(R.id.action_loginFragment_to_crearPerfilFragment);
                     } else if (clienteId == 0) {
                         //Agregar navegacion a alta de cliente
+                        NavController navController = Navigation.findNavController(view);
+                        navController.navigate(R.id.action_loginFragment_to_crearPerfilFragment);
                     } else {
                         Toast.makeText(getContext(),loginResult.getError(), Toast.LENGTH_SHORT).show();
                         //Navegacion a home
