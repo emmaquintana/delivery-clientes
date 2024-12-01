@@ -11,6 +11,9 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
+            android:id="@+id/action_homeFragment_to_carritoFragment"
+            app:destination="@id/carritoFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
@@ -22,35 +25,121 @@
         <action
             android:id="@+id/action_pedidosFragment_to_detalleFragment"
             app:destination="@id/detalleFragment" />
+        <action
+            android:id="@+id/action_pedidosFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.delivery_clientes.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_faqFragment"
+            app:destination="@id/faqFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_pedidosFragment"
+            app:destination="@id/pedidosFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_carritoFragment"
+            app:destination="@id/carritoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_misDatosFragment"
+            app:destination="@id/misDatosFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/carritoFragment"
         android:name="com.delivery_clientes.ui.carrito.CarritoFragment"
         android:label="fragment_carrito"
-        tools:layout="@layout/fragment_carrito" />
+        tools:layout="@layout/fragment_carrito" >
+        <action
+            android:id="@+id/action_carritoFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detalleFragment"
         android:name="com.delivery_clientes.ui.pedidos.detalle.DetalleFragment"
         android:label="DetalleFragment"
         tools:layout="@layout/fragment_pedido_detalle">
         <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_faqFragment"
-            app:destination="@id/faqFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_pedidosFragment"
-            app:destination="@id/pedidosFragment" />
+            android:id="@+id/action_detalleFragment_to_seguimientoFragment"
+            app:destination="@id/seguimientoFragment" />
     </fragment>
     <fragment
         android:id="@+id/seguimientoFragment"
         android:name="com.delivery_clientes.ui.pedidos.seguimiento.SeguimientoFragment"
         android:label="SeguimientoFragment"
         tools:layout="@layout/fragment_pedido_seguimiento"/>
+    <fragment
+        android:id="@+id/faqFragment"
+        android:name="com.delivery_clientes.ui.profile.faq.FaqFragment"
+        android:label="fragment_faq"
+        tools:layout="@layout/fragment_faq">
+        <action
+            android:id="@+id/action_faqFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/misDatosFragment"
+        android:name="com.delivery_clientes.ui.profile.misDatos.MisDatosFragment"
+        android:label="MisDatosFragment"
+        tools:layout="@layout/fragment_mis_datos">
+        <action
+            android:id="@+id/action_misDatosFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            />
+        <action
+            android:id="@+id/action_misDatosFragment_to_editarDatosFragment"
+            app:destination="@id/editarDatosFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/editarDatosFragment"
+        android:name="com.delivery_clientes.ui.profile.misDatos.EditarDatosFragment"
+        android:label="EditarDatosFragment"
+        tools:layout="@layout/fragment_editar_datos">
+        <action
+            android:id="@+id/action_editarDatosFragment_to_misDatosFragment"
+            app:destination="@id/misDatosFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            />
+    </fragment>
 </navigation>

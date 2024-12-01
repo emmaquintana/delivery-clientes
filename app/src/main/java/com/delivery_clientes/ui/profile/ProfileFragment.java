@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.delivery_clientes.R;
+import com.delivery_clientes.data.db.AppDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class ProfileFragment extends Fragment {
+
+    private ProfileViewModel profileViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -80,11 +84,13 @@ public class ProfileFragment extends Fragment {
             NavController navController = Navigation.findNavController(view);
             switch (selectedItem) {
                 case "Mis datos":
+                    navController.navigate(R.id.action_profileFragment_to_misDatosFragment);
                     break;
                 case "Mis pedidos":
                     navController.navigate(R.id.action_profileFragment_to_pedidosFragment);
                     break;
                 case "Carrito":
+                    navController.navigate(R.id.action_profileFragment_to_carritoFragment);
                     break;
                 case "Preguntas frecuentes":
                     navController.navigate(R.id.action_profileFragment_to_faqFragment);
@@ -92,7 +98,30 @@ public class ProfileFragment extends Fragment {
                 case "Cerrar sesión":
                     break;
             }
-            Toast.makeText(requireContext(), "Seleccionaste: " + selectedItem, Toast.LENGTH_SHORT).show();
+        });
+
+        AppDatabase db = AppDatabase.getInstance(requireContext());
+        profileViewModel = new ProfileViewModel(db);
+
+        // Obtener instancia de la base de datos
+        AppDatabase database = AppDatabase.getInstance(requireContext());
+
+        // Crear el ViewModel directamente
+        profileViewModel = new ProfileViewModel(database);
+
+        // Cargar datos del cliente (por ejemplo, con un ID 1)
+        profileViewModel.cargarClientePorId(1);
+
+        // Observar el LiveData del cliente
+        profileViewModel.getCliente().observe(getViewLifecycleOwner(), cliente -> {
+            if (cliente != null) {
+                // Actualiza la UI con los datos del cliente
+                TextView username = view.findViewById(R.id.txt_username);
+                username.setText(profileViewModel.getCliente().getValue().getNombre());
+
+                // Obtiene la dirección del cliente y en base a ello establece su provincia y ciudad
+                // ...
+            }
         });
     }
 }

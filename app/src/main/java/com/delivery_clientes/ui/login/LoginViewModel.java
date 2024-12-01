@@ -38,6 +38,11 @@ public class LoginViewModel extends AndroidViewModel {
             Usuario usuario = db.usuariosDAO().login(email, password);
             if(usuario != null){
                 saveLoginState(true); // Guarda que el usuario está logueado
+                // Guarda el id del cliente
+                SharedPreferences sharedPreferences = getApplication().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("cliente_id", usuario.getClientes_id());
+                editor.apply();
                 loginResult.postValue(new LoginResult(true));
             }else {
                 saveLoginState(false); // No está logueado
@@ -68,6 +73,4 @@ public class LoginViewModel extends AndroidViewModel {
         editor.putBoolean("isLoggedIn", isLoggedIn);
         editor.apply();
     }
-
-
 }
