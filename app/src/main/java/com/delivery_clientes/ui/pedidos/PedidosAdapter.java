@@ -1,11 +1,15 @@
 package com.delivery_clientes.ui.pedidos;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
@@ -13,7 +17,7 @@ import com.delivery_clientes.data.db.entities.Pedidos;
 
 import java.util.List;
 
-public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder> implements View.OnClickListener {
+public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder> {//implements View.OnClickListener {
 
     private List<Pedidos> pedidosList;
     private View.OnClickListener listener;
@@ -24,9 +28,6 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosV
     @Override
     public PedidosViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pedidos_item,parent,false);
-
-        view.setOnClickListener(this);
-
         return new PedidosViewHolder(view);
     }
 
@@ -42,30 +43,44 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosV
     @Override
     public int getItemCount() {return pedidosList.size();}
 
-    public void setOnClickListener(View.OnClickListener listener){
-        this.listener = listener;
-    }
-
-    @Override
-    public void onClick(View view){
-        if (listener != null) {listener.onClick(view);}
-    }
-
     public void updateData(List<Pedidos> nuevosPedidos){
         pedidosList = nuevosPedidos;
         notifyDataSetChanged();
     }
 
-    public static class PedidosViewHolder extends RecyclerView.ViewHolder{
+    public class PedidosViewHolder extends RecyclerView.ViewHolder {
         TextView idPedido;
         TextView fechaPedido;
         TextView estadoPedido;
+        ConstraintLayout item;
 
-        public PedidosViewHolder(@NonNull View itemView){
+        public PedidosViewHolder(@NonNull View itemView) {
             super(itemView);
+            item = itemView.findViewById(R.id.pedidosItem);
             idPedido = itemView.findViewById(R.id.textViewPedido);
             fechaPedido = itemView.findViewById(R.id.textViewFechaPed);
             estadoPedido = itemView.findViewById(R.id.textViewEstadoPed);
+
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    long id = pedidosList.get(position).getId();
+                    int negocio = pedidosList.get(position).getNegocio_id();
+                    int repartidor = pedidosList.get(position).getRepartidor_id();
+                    String fecha = pedidosList.get(position).getFecha_pedido();
+                    String estado = pedidosList.get(position).getEstado();
+                    NavController navController = Navigation.findNavController(view);
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("pedidoId", id);
+                    bundle.putInt("negocio", negocio);
+                    bundle.putInt("repartidor", repartidor);
+                    bundle.putString("fecha", fecha);
+                    bundle.putString("estado", estado);
+                    navController.navigate(R.id.action_pedidosFragment_to_detalleFragment, bundle);
+                }
+            });
         }
     }
+
 }

@@ -3,15 +3,13 @@ package com.delivery_clientes.data.db.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDate;
-
 @Entity(tableName = "pedidos")
 public class Pedidos {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
-    private int cliente_id;
+    private long cliente_id;
     private int negocio_id;
     private int repartidor_id;
     private String fecha_pedido;
@@ -20,7 +18,7 @@ public class Pedidos {
     public Pedidos() {
     }
 
-    public Pedidos(int cliente_id, int negocio_id, int repartidor_id, String fecha_pedido, String estado) {
+    public Pedidos(long cliente_id, int negocio_id, int repartidor_id, String fecha_pedido, String estado) {
         this.cliente_id = cliente_id;
         this.negocio_id = negocio_id;
         this.repartidor_id = repartidor_id;
@@ -28,19 +26,19 @@ public class Pedidos {
         this.estado = estado;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getCliente_id() {
+    public long getCliente_id() {
         return cliente_id;
     }
 
-    public void setCliente_id(int cliente_id) {
+    public void setCliente_id(long cliente_id) {
         this.cliente_id = cliente_id;
     }
 

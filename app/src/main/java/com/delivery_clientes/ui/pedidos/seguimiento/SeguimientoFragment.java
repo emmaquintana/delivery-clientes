@@ -35,8 +35,6 @@ public class SeguimientoFragment extends Fragment {
         seguimientoAdapter = new SeguimientoAdapter(new ArrayList<>());
         recyclerViewSeguimiento.setAdapter(seguimientoAdapter);
 
-
-
         return view;
     }
 
@@ -44,9 +42,12 @@ public class SeguimientoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = getArguments();
+        long pedidoId = bundle.getLong("pedidoId");
+
         seguimientoViewModel = new ViewModelProvider(this).get(SeguimientoViewModel.class);
 
-        seguimientoViewModel.getSeguimientoLiveData().observe(getViewLifecycleOwner(), seguimientoList -> {
+        seguimientoViewModel.getSeguimientoLiveData(pedidoId).observe(getViewLifecycleOwner(), seguimientoList -> {
             seguimientoAdapter.updateData(seguimientoList);
         });
     }

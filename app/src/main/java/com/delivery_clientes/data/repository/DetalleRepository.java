@@ -23,8 +23,8 @@ public class DetalleRepository {
 
     public void insertarDetallePedido(PedidoDetalle ped) {pedidosDetalleDAO.insertarPedidoDetalle(ped);}
 
-    public LiveData<List<PedidoDetalle>> obtenerDetalleLive(){
-        return pedidosDetalleDAO.obtenerDetalleLive();
+    public LiveData<List<PedidoDetalle>> obtenerDetalleLive(long id){
+        return pedidosDetalleDAO.obtenerDetallePedidoPorIdPedido(id);
     }
 
 }

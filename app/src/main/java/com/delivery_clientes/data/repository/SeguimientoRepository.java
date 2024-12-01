@@ -21,12 +21,19 @@ public class SeguimientoRepository {
 
     public List<Seguimiento> obtenerSeguimiento() {return seguimientoDAO.obtenerSeguimientos();}
 
-    public LiveData<List<Seguimiento>> obtenerSeguimientoLive(){
-        return seguimientoDAO.obtenerSeguimientoLive();
+    public LiveData<List<Seguimiento>> obtenerSeguimientoLive(long pedidoId){
+        return seguimientoDAO.obtenerSeguimientoDePedidoPorIdPedido(pedidoId);
     }
 
     public void insertarSeguimiento(Seguimiento seg) {seguimientoDAO.insertarSeguimiento(seg);}
 
     public void actualizarSeguimiento(Seguimiento seg){seguimientoDAO.actualizarSeguimiento(seg);}
 
+    public LiveData<Seguimiento> obtenerSeguimientoEstadoDePedidoPorIdPedido(int pedidoId){
+        return seguimientoDAO.obtenerSeguimientoEstadoDePedidoPorIdPedido(pedidoId);
+    }
+
+    public LiveData<Seguimiento> obtenerEstadoLive(int id){
+        return seguimientoDAO.obtenerSeguimientoEstadoDePedidoPorIdPedido(id);
+    }
 }

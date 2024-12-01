@@ -91,6 +91,7 @@
         android:text="ID"
         android:textAlignment="textEnd"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtVwPDpedidoLabel"
@@ -104,6 +105,7 @@
         android:layout_marginEnd="32dp"
         android:text="ID"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtVwPDnegocioLabel"
@@ -117,6 +119,7 @@
         android:layout_marginEnd="32dp"
         android:text="ID"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtVwPDrepartidorLabel"
@@ -143,6 +146,7 @@
         android:layout_marginEnd="32dp"
         android:text="Status"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtVwPDestadoLabel"
@@ -150,14 +154,43 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPedidoDetalle"
-        android:layout_width="346dp"
-        android:layout_height="360dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnDetSeguimiento"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtVwPDTotalLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtVwPDproductosLabel">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/txtVwPDTotalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="TOTAL: "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnDetSeguimiento"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtVwPDTotalValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="$0"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDetSeguimiento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtVwPDTotalLabel" />
 
     <Button
         android:id="@+id/btnDetSeguimiento"

@@ -17,13 +17,16 @@ public interface SeguimientoDAO {
     List<Seguimiento> obtenerSeguimientos();
 
     @Query("SELECT * FROM seguimiento WHERE pedido_id = :pedido_id")
-    List<Seguimiento> obtenerSeguimientoDePedidoPorIdPedido(int pedido_id);
+    LiveData<List<Seguimiento>> obtenerSeguimientoDePedidoPorIdPedido(long pedido_id);
 
     @Query("SELECT * FROM seguimiento WHERE pedido_id = :pedido_id AND estado = :estado")
     List<Seguimiento> obtenerSeguimientoDePedidoPorIdAndEstado(int pedido_id, String estado);
 
     @Query("SELECT * FROM seguimiento")
     LiveData<List<Seguimiento>> obtenerSeguimientoLive();
+
+    @Query("SELECT * FROM seguimiento WHERE pedido_id = :pedido_id ORDER BY id DESC LIMIT 1")
+    LiveData<Seguimiento> obtenerSeguimientoEstadoDePedidoPorIdPedido(int pedido_id);
 
     @Insert
     void insertarSeguimiento(Seguimiento seguimiento);

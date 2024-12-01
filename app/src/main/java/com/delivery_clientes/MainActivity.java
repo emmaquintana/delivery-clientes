@@ -11,6 +11,7 @@ import com.delivery_clientes.data.db.entities.Negocios;
 import com.delivery_clientes.data.db.entities.PedidoDetalle;
 import com.delivery_clientes.data.db.entities.Pedidos;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.delivery_clientes.data.db.entities.Repartidores;
 import com.delivery_clientes.data.db.entities.Seguimiento;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }, SPLASH_SCREEN_TIMEOUT);
 
-//
-//        //Eliminar posteriormente
-//
-//        //Categorias
+
+//        Eliminar posteriormente
+
+////        //Categorias
 //        Categorias categoria1 = new Categorias();
 //        categoria1.setNombre("Categoria 1");
 //
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //        prod1.setCategoria_id(1);
 //        prod1.setNegocio_id(1);
 //
-
+//
 //        Productos prod2 = new Productos();
 //        prod2.setNombre("Producto 2");
 //        prod2.setDescripcion("Descripcion 2");
@@ -78,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
 //        prod2.setCategoria_id(1);
 //        prod2.setNegocio_id(1);
 //
+//        Productos prod3 = new Productos();
+//        prod3.setNombre("Producto 3");
+//        prod3.setDescripcion("Descripcion 3");
+//        prod3.setPrecio(5000);
+//        prod3.setStock(50);
+//        prod3.setCategoria_id(2);
+//        prod3.setNegocio_id(1);
+
 //
 //        //Pedido
 //        Pedidos ped = new Pedidos();
@@ -110,6 +119,16 @@ public class MainActivity extends AppCompatActivity {
 //        seg3.setEstado("Entregado");
 //        seg3.setFecha_actualizacion("2024-11-25 20:30:00");
 //
+//
+//
+//        Negocios negocio1 = new Negocios();
+//        negocio1.setNombre("Negocio1");
+//        negocio1.setCuit("123456");
+//        negocio1.setEmail("negocio@email.com");
+//        negocio1.setEstado(1);
+//        negocio1.setDireccion_id(1);
+//        negocio1.setTelefono("385123456");
+//
 //        new Thread(() -> {
 //            AppDatabase db = AppDatabase.getInstance(getApplication());
 //            db.categoriasDAO().insertarCategoria(categoria1);
@@ -118,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //            db.negociosDAO().insertarNegocio(negocio1);
 //
+//            db.productosDAO().insertarProducto(prod1);
 //            db.productosDAO().insertarProducto(prod2);
+//            db.productosDAO().insertarProducto(prod3);
 //            db.pedidosDAO().insertarPedido(ped);
 //            db.pedidosDetalleDAO().insertarPedidoDetalle(det);
 //            db.seguimientoDAO().insertarSeguimiento(seg);
