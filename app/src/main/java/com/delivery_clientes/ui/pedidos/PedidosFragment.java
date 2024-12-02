@@ -53,6 +53,5 @@ public class PedidosFragment extends Fragment {
         pedidosViewModel.getPedidosLiveData().observe(getViewLifecycleOwner(), pedidosList -> {
             pedidosAdapter.updateData(pedidosList);
         });
-
     }
 }

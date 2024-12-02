@@ -42,7 +42,6 @@ public class LoginViewModel extends AndroidViewModel {
     public void login(String email, String password){
         new Thread(() -> {
             Usuario usuario = usuariosRepository.login(email, password);
-            Log.d("User Login","Usuario - Email: " + usuario.getEmail());
             if(usuario != null){
                 saveLoginState(true, email); // Guarda que el usuario está logueado
                 loginResult.postValue(new LoginResult(true));

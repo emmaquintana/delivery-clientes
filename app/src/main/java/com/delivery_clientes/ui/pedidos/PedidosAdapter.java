@@ -14,15 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Pedidos;
+import com.delivery_clientes.data.db.entities.Seguimiento;
 
 import java.util.List;
 
-public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder> {//implements View.OnClickListener {
+public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder> {
 
     private List<Pedidos> pedidosList;
     private View.OnClickListener listener;
 
-    public PedidosAdapter(List<Pedidos> pedidosList) {this.pedidosList = pedidosList;}
+    public PedidosAdapter(List<Pedidos> pedidosList) {
+        this.pedidosList = pedidosList;
+    }
 
     @NonNull
     @Override
