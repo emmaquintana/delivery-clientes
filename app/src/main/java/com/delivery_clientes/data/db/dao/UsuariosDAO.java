@@ -6,6 +6,8 @@ import androidx.room.Query;
 
 import com.delivery_clientes.data.db.entities.Usuario;
 
+import java.util.List;
+
 @Dao
 public interface UsuariosDAO {
 
@@ -17,4 +19,10 @@ public interface UsuariosDAO {
 
     @Query("SELECT * FROM usuarios WHERE email = :email")
     Usuario findUserByUsername(String email);
+
+    @Query("SELECT * FROM usuarios")
+    List<Usuario> obtenerUsuarios();
+
+    @Query("UPDATE usuarios SET clientes_id = :clienteId WHERE idUsuarios = :usuarioId")
+    void actualizarClienteId(int usuarioId, int clienteId);
 }

@@ -97,7 +97,7 @@ public class DetalleFragment extends Fragment {
             }
         });
 
-        detalleViewModel.getSeguimiento(id).observe(getViewLifecycleOwner(), seguimiento -> {
+        detalleViewModel.getSeguimiento((int) id).observe(getViewLifecycleOwner(), seguimiento -> {
             if (seguimiento != null){
                 estado.setText(seguimiento.getEstado());
             } else {

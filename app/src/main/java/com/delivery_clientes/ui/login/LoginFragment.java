@@ -72,10 +72,20 @@ public class LoginFragment extends Fragment {
 
                 mViewModel.getClienteIdLiveData().observe(getViewLifecycleOwner(), clienteId -> {
                     if (clienteId == null) return;
-                    if(clienteId == -1){
+                    if(clienteId == -1){ // La verdad no sé por qué esta esto. De todas formas, por alguna razón que desconozco, incluso si el cliente ya está creado, entra aqui siendo que si id = 0
                         Toast.makeText(getContext(),"Cliente inexistente, id = -1", Toast.LENGTH_SHORT).show();
+                        String email = emailInput.getText().toString().trim();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("email", email);
+                        NavController navController = Navigation.findNavController(view);
+                        navController.navigate(R.id.action_loginFragment_to_crearPerfilFragment, bundle);
                     } else if (clienteId == 0) {
                         //Agregar navegacion a alta de cliente
+                        String email = emailInput.getText().toString().trim();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("email", email);
+                        NavController navController = Navigation.findNavController(view);
+                        navController.navigate(R.id.action_loginFragment_to_crearPerfilFragment, bundle);
                     } else {
                         Toast.makeText(getContext(),loginResult.getError(), Toast.LENGTH_SHORT).show();
                         //Navegacion a home

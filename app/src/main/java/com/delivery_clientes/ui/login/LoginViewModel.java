@@ -19,7 +19,7 @@ import com.delivery_clientes.utils.SingleLiveEvent;
 
 public class LoginViewModel extends AndroidViewModel {
 
-//    private AppDatabase db;
+    //    private AppDatabase db;
     private SingleLiveEvent<LoginResult> loginResult = new SingleLiveEvent<>();
     private ClientesRepository clientesRepository;
     private UsuariosRepository usuariosRepository;
@@ -104,6 +104,4 @@ public class LoginViewModel extends AndroidViewModel {
         editor.putString("email", email);
         editor.apply();
     }
-
-
 }

@@ -29,6 +29,9 @@
     <string name="changePWInstructions">Ingresar una nueva password y confirmar. </string>
     <string name="title_pedidos">Pedidos</string>
     <string name="title_perfil">Perfil</string>
+    <string name="title_crear_perfil">Crear perfil</string>
+    <string name="title_mis_datos">Mis datos</string>
+    <string name="editar_datos">Editar datos</string>
     <string name="carritoImgDesc">Carrito</string>
     <string name="carritoTotalLabel">Total: </string>
 
