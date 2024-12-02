@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
 
                 mViewModel.getClienteIdLiveData().observe(getViewLifecycleOwner(), clienteId -> {
                     if (clienteId == null) return;
-                    if(clienteId == -1){ // La verdad no sé por qué esta esto. De todas formas, por alguna razón que desconozco, incluso si el cliente ya está creado, entra aqui siendo que si id = 0
+                    if(clienteId == -1){
                         Toast.makeText(getContext(),"Cliente inexistente, id = -1", Toast.LENGTH_SHORT).show();
                         String email = emailInput.getText().toString().trim();
                         Bundle bundle = new Bundle();
