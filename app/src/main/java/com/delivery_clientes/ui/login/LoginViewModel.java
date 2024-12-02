@@ -19,7 +19,7 @@ import com.delivery_clientes.utils.SingleLiveEvent;
 
 public class LoginViewModel extends AndroidViewModel {
 
-//    private AppDatabase db;
+    //    private AppDatabase db;
     private SingleLiveEvent<LoginResult> loginResult = new SingleLiveEvent<>();
     private ClientesRepository clientesRepository;
     private UsuariosRepository usuariosRepository;
@@ -43,7 +43,7 @@ public class LoginViewModel extends AndroidViewModel {
         new Thread(() -> {
             Usuario usuario = usuariosRepository.login(email, password);
             Log.d("User Login","Usuario - Email: " + usuario.getEmail());
-            if(usuario != null){                
+            if(usuario != null){
                 saveLoginState(true, email); // Guarda que el usuario está logueado
                 loginResult.postValue(new LoginResult(true));
                 obtenerClienteId();

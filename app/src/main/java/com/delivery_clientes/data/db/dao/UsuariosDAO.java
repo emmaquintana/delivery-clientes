@@ -22,4 +22,7 @@ public interface UsuariosDAO {
 
     @Query("SELECT * FROM usuarios")
     List<Usuario> obtenerUsuarios();
+
+    @Query("UPDATE usuarios SET clientes_id = :clienteId WHERE idUsuarios = :usuarioId")
+    void actualizarClienteId(int usuarioId, int clienteId);
 }

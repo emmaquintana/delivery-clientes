@@ -26,4 +26,11 @@ public class UsuariosRepository {
     public long insertarUsuario(Usuario usuario){
         return usuariosDAO.insertUsuario(usuario);
     }
+
+    // Método para actualizar el clientes_id en Usuario
+    public void actualizarClienteId(int usuarioId, int clienteId) {
+        new Thread(() -> {
+            usuariosDAO.actualizarClienteId(usuarioId, clienteId);
+        }).start();
+    }
 }

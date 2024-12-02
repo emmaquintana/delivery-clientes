@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -43,6 +44,9 @@ public class CrearPerfilFragment extends Fragment {
 
         Button btnCrearPerfil = view.findViewById(R.id.BtnCrearPerfil);
 
+        CrearPerfilViewModelFactory factory = new CrearPerfilViewModelFactory(getActivity().getApplication());
+        CrearPerfilViewModel crearPerfilViewModel = new ViewModelProvider(this, factory).get(CrearPerfilViewModel.class);
+
         btnCrearPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +64,25 @@ public class CrearPerfilFragment extends Fragment {
                     Toast.makeText(getContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    // No sé qué hacer
+
+                    // Obtiene el email
+                    Bundle bundle = getArguments();
+                    String email = bundle.getString("email");
+                    // Creaa cliente en la base de datos
+                    crearPerfilViewModel.crearCliente(nombre, apellido, fechaNacimiento, telefono, email);
+
+                    // Observa el resultado de la operación
+                    crearPerfilViewModel.getClienteCreado().observe(getViewLifecycleOwner(), clienteCreado -> {
+                        if (clienteCreado != null) {
+                            Toast.makeText(getContext(), "Perfil creado exitosamente", Toast.LENGTH_SHORT).show();
+
+                            // Navega al home
+                            NavController navController = Navigation.findNavController(view);
+                            navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
+                        } else {
+                            Toast.makeText(getContext(), "Error al crear el perfil", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
