@@ -5,6 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/imgBtnDetBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/go_back_icon"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Atras"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
     <TextView
         android:id="@+id/txtVwPDTitulo"
         android:layout_width="wrap_content"

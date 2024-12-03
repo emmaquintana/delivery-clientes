@@ -17,7 +17,7 @@ public interface PedidosDAO {
     @Query("SELECT * FROM pedidos")
     List<Pedidos> obtenerPedidos();
 
-    @Query("SELECT * FROM pedidos WHERE id = :pedido_id ORDER BY id DESC")
+    @Query("SELECT * FROM pedidos WHERE id = :pedido_id")
     Pedidos obtenerPedidoPorId(int pedido_id);
 
     @Query("SELECT * FROM pedidos WHERE cliente_id = :cliente_id ORDER BY id DESC")

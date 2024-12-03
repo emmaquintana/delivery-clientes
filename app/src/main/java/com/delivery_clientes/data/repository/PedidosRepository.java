@@ -29,6 +29,8 @@ public class PedidosRepository {
         return pedidosDAO.obtenerPedidosPorClienteIdLive(cliente_id);
     }
 
+    public Pedidos obtenerPedidoPorId(int pedidoId){return pedidosDAO.obtenerPedidoPorId(pedidoId);}
+
     public long insertarPedido(Pedidos ped) { return pedidosDAO.insertarPedido(ped);}
 
     public void actualizarPedido(Pedidos ped) {pedidosDAO.actualizarPedido(ped);}
