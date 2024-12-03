@@ -1,5 +1,6 @@
 package com.delivery_clientes.ui.pedidos.seguimiento;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Seguimiento;
 import com.delivery_clientes.ui.pedidos.PedidosAdapter;
+import com.delivery_clientes.utils.NotificationHelper;
 
 import java.util.List;
 
@@ -38,9 +40,13 @@ public class SeguimientoAdapter extends RecyclerView.Adapter<SeguimientoAdapter.
     @Override
     public int getItemCount() {return seguimientoList.size();}
 
-    public void updateData(List<Seguimiento> nuevosSeguimiento){
+    public void updateData(Context context, List<Seguimiento> nuevosSeguimiento){
         seguimientoList = nuevosSeguimiento;
         notifyDataSetChanged();
+        String estado = seguimientoList.get(seguimientoList.size()-1).getEstado();
+        if(!estado.equals("Pendiente")){
+            NotificationHelper.sendLocalNotification(context, "Estado de su pedido: " + estado);
+        }
     }
 
     public static class SeguimientoViewHolder extends RecyclerView.ViewHolder{

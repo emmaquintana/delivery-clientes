@@ -1,6 +1,7 @@
 package com.delivery_clientes.ui.pedidos.seguimiento;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -46,4 +47,5 @@ public class SeguimientoViewModel extends AndroidViewModel {
         pedido.setEstado("Entregado");
         pedidosRepository.actualizarPedido(pedido);
     }
+
 }

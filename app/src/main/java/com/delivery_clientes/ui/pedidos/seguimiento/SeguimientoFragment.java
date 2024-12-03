@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
+import com.delivery_clientes.utils.NotificationHelper;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,7 @@ public class SeguimientoFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState){
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pedido_seguimiento, container, false);
 
         recyclerViewSeguimiento = view.findViewById(R.id.recyclerViewSeguimiento);
@@ -54,7 +55,7 @@ public class SeguimientoFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
@@ -63,7 +64,7 @@ public class SeguimientoFragment extends Fragment {
         seguimientoViewModel = new ViewModelProvider(this).get(SeguimientoViewModel.class);
 
         seguimientoViewModel.getSeguimientoLiveData(pedidoId).observe(getViewLifecycleOwner(), seguimientoList -> {
-            seguimientoAdapter.updateData(seguimientoList);
+            seguimientoAdapter.updateData(getActivity(),seguimientoList);
         });
     }
 

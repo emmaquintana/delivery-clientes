@@ -8,6 +8,7 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.delivery_clientes.utils.NotificationHelper;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,6 +31,9 @@ public class ContainerActivity extends AppCompatActivity {
             // Configura la navegación con BottomNavigationView
             NavigationUI.setupWithNavController(bottomNavigationView, navController);
         }
+
+        // Crear el canal de notificación
+        NotificationHelper.createNotificationChannel(this);
     }
 
     @Override
