@@ -52,20 +52,4 @@
         android:label="activity_container"
         tools:layout="@layout/activity_container" />
 
-
-    <!--    <fragment/>-->
-    <!--        android:id="@+id/forgottenPasswordFragment"-->
-    <!--        android:name="com.food_app.fragments.ForgottenPasswordFragment"-->
-    <!--        android:label="fragment_forgotten_password"-->
-    <!--        tools:layout="@layout/fragment_forgotten_password" />-->
-    <!--    <fragment-->
-    <!--        android:id="@+id/resettedPasswordFragment"-->
-    <!--        android:name="com.food_app.fragments.ResettedPasswordFragment"-->
-    <!--        android:label="fragment_resetted_password"-->
-    <!--        tools:layout="@layout/fragment_resetted_password" />-->
-    <!--    <fragment-->
-    <!--        android:id="@+id/changePasswordFragment"-->
-    <!--        android:name="com.food_app.fragments.ChangePasswordFragment"-->
-    <!--        android:label="fragment_change_password"-->
-    <!--        tools:layout="@layout/fragment_change_password" />-->
 </navigation>

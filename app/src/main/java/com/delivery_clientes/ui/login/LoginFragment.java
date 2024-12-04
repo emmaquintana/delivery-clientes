@@ -2,6 +2,7 @@ package com.delivery_clientes.ui.login;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.delivery_clientes.ContainerActivity;
 import com.delivery_clientes.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -74,11 +76,6 @@ public class LoginFragment extends Fragment {
                     if (clienteId == null) return;
                     if(clienteId == -1){
                         Toast.makeText(getContext(),"Cliente inexistente, id = -1", Toast.LENGTH_SHORT).show();
-                        String email = emailInput.getText().toString().trim();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("email", email);
-                        NavController navController = Navigation.findNavController(view);
-                        navController.navigate(R.id.action_loginFragment_to_crearPerfilFragment, bundle);
                     } else if (clienteId == 0) {
                         //Agregar navegacion a alta de cliente
                         String email = emailInput.getText().toString().trim();
