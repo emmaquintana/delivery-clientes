@@ -39,28 +39,16 @@ public class ContainerActivity extends AppCompatActivity {
             // Agrega un listener para controlar la navegación y limpiar la pila
             bottomNavigationView.setOnItemSelectedListener(item -> {
                 if (item.getItemId() == R.id.homeFragment) {
-//                    // Navega a HomeFragment y limpia la pila
-//                    navController.popBackStack(R.id.homeFragment, false);  // Limpia la pila antes de navegar
-//                    navController.navigate(R.id.homeFragment);
-
                     navController.navigate(R.id.homeFragment, null, new NavOptions.Builder()
                             .setPopUpTo(R.id.homeFragment, true) // Elimina todos los fragmentos previos
                             .build());
                     return true;
                 } else if (item.getItemId() == R.id.pedidosFragment) {
-//                    // Navega a PedidosFragment y limpia la pila
-//                    navController.popBackStack(R.id.pedidosFragment, false);
-//                    navController.navigate(R.id.pedidosFragment);
-
                     navController.navigate(R.id.pedidosFragment, null, new NavOptions.Builder()
                             .setPopUpTo(R.id.homeFragment, true) // Elimina todos los fragmentos previos
                             .build());
                     return true;
                 } else if (item.getItemId() == R.id.profileFragment) {
-//                    // Navega a PerfilFragment y limpia la pila
-//                    navController.popBackStack(R.id.profileFragment, false);
-//                    navController.navigate(R.id.profileFragment);
-
                     navController.navigate(R.id.profileFragment, null, new NavOptions.Builder()
                             .setPopUpTo(R.id.homeFragment, true) // Elimina todos los fragmentos previos
                             .build());
