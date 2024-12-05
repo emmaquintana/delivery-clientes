@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
-                    android:text="Pregunta 1"
+                    android:text="¿Puedo editar mi carrito después de agregar productos?"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -58,7 +58,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Respuesta de pregunta 1"
+                    android:text="Sí, puedes modificar tu carrito antes de confirmar tu pedido. Desde la sección del carrito, puedes ajustar las cantidades de cada producto o eliminarlos. También verás un resumen actualizado con el costo total y los productos disponibles."
                     android:textAlignment="center"
                     android:textSize="16sp"
                     android:visibility="gone" />
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
-                    android:text="Pregunta 2"
+                    android:text="¿Cómo actualizo mi dirección?"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -89,7 +89,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Respuesta de pregunta 2"
+                    android:text="Puedes actualizar tu dirección desde la sección &quot;Mis datos&quot; que se encuentra en &quot;Perfil&quot; en la barra de navegación inferior. Edita tu perfil y guarda los cambios antes de realizar un nuevo pedido para asegurarte de que llegue al lugar correcto."
                     android:textAlignment="center"
                     android:textSize="16sp"
                     android:visibility="gone" />
@@ -112,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
-                    android:text="Pregunta 3"
+                    android:text="¿Cómo puedo ver solo cierta categoría de bebidas?"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -120,7 +120,38 @@
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Respuesta de pregunta 3"
+                    android:text="En la sección principal &quot;Tienda&quot; puedes observar todos los productos y elegir una categoría en particular desde la barra superior"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <LinearLayout
+                android:id="@+id/Faq4Container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/BtnTrigger4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:text="¿Puedo cambiar mi fecha de nacimiento?"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No. La fecha de nacimiento no puede ser reestablecida"
                     android:textAlignment="center"
                     android:textSize="16sp"
                     android:visibility="gone" />

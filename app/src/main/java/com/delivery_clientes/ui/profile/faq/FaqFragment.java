@@ -86,5 +86,13 @@ public class FaqFragment extends Fragment {
             textView3.setVisibility(textView3.getVisibility() == View.VISIBLE ?
                     View.GONE : View.VISIBLE);
         });
+
+        // FAQ 4
+        Button btnTrigger4 = view.findViewById(R.id.BtnTrigger4);
+        TextView textView4 = view.findViewById(R.id.textView4);
+        btnTrigger4.setOnClickListener(v -> {
+            textView4.setVisibility(textView4.getVisibility() == View.VISIBLE ?
+                    View.GONE : View.VISIBLE);
+        });
     }
 }
