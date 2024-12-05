@@ -75,7 +75,6 @@ public class LoginFragment extends Fragment {
                 mViewModel.getClienteIdLiveData().observe(getViewLifecycleOwner(), clienteId -> {
                     if (clienteId == null) return;
                     if(clienteId == -1){
-                        Toast.makeText(getContext(),"Cliente inexistente, id = -1", Toast.LENGTH_SHORT).show();
                         //Agregar navegacion a alta de cliente
                         String email = emailInput.getText().toString().trim();
                         Bundle bundle = new Bundle();
