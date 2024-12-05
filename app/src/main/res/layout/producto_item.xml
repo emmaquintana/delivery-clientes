@@ -31,22 +31,20 @@
 
     <TextView
         android:id="@+id/textViewDescItemCarrito"
-        android:layout_width="0dp"
+        android:layout_width="84dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/dividerItemProductos"
-        app:layout_constraintEnd_toStartOf="@+id/textViewPrecioItemCarrito"
         app:layout_constraintStart_toEndOf="@+id/imageViewItemCarrito"
         app:layout_constraintTop_toBottomOf="@+id/textViewItemCarrito"
         tools:text="Descripcion" />
 
     <TextView
         android:id="@+id/textViewPrecioItemCarrito"
-        android:layout_width="72dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -54,6 +52,8 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/dividerItemProductos"
         app:layout_constraintEnd_toStartOf="@+id/carritoAgregarProducto"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewDescItemCarrito"
         app:layout_constraintTop_toBottomOf="@+id/textViewItemCarrito"
         tools:text="$9999.99" />
 

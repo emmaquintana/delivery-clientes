@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Productos;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +53,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
             holder.descProducto.setText(producto.getDescripcion());
             holder.precio.setText(String.format("$%.2f", producto.getPrecio()));
             holder.cantidades.setText(String.format("x%d", carritoItem.getCantidad()));
+            Picasso.get().load(producto.getImagen()).into(holder.imageView);
 
             holder.menos.setOnClickListener(view -> {
                 carritoViewModel.restarCarritoItem(carritoItem.getId_producto());
