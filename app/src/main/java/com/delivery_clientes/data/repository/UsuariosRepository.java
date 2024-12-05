@@ -2,6 +2,8 @@ package com.delivery_clientes.data.repository;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+
 import com.delivery_clientes.data.db.AppDatabase;
 import com.delivery_clientes.data.db.dao.UsuariosDAO;
 import com.delivery_clientes.data.db.entities.Usuario;
@@ -23,8 +25,16 @@ public class UsuariosRepository {
         return usuariosDAO.findUserByUsername(email);
     }
 
+    public LiveData<Usuario> findUserByEmailLive(String email){
+        return usuariosDAO.findeUserByEmailLive(email);
+    }
+
     public long insertarUsuario(Usuario usuario){
         return usuariosDAO.insertUsuario(usuario);
+    }
+
+    public void actualizarUsuario(Usuario usuario) {
+        usuariosDAO.actualizarUsuario(usuario);
     }
 
     // Método para actualizar el clientes_id en Usuario
