@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,7 +24,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.delivery_clientes.LoginActivity;
 import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.AppDatabase;
+import com.delivery_clientes.data.db.entities.Clientes;
 import com.delivery_clientes.ui.login.LoginViewModel;
+import com.delivery_clientes.ui.profile.misDatos.MisDatosViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -42,6 +45,14 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
+        TextView user = view.findViewById(R.id.txt_username);
+        LiveData<Clientes> cliente = profileViewModel.getCliente();
+        cliente.observe(getViewLifecycleOwner(), clientes -> {
+            user.setText(clientes.getNombre() + " " + clientes.getApellido());
+        });
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         AppCompatActivity activity = (AppCompatActivity) requireActivity();

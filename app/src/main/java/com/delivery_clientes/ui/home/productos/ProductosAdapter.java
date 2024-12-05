@@ -15,6 +15,7 @@ import com.delivery_clientes.R;
 import com.delivery_clientes.data.db.entities.Productos;
 import com.delivery_clientes.ui.carrito.CarritoItem;
 import com.delivery_clientes.ui.carrito.CarritoViewModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Prod
         holder.nombreProducto.setText(producto.getNombre());
         holder.descProducto.setText(producto.getDescripcion());
         holder.precio.setText(String.format("$%.2f",producto.getPrecio()));
+        Picasso.get().load(producto.getImagen()).into(holder.imageView);
 
         //Observacion dinamica para mostrar en home la cantidad de cada producto en el carrito
         LiveData<List<CarritoItem>> carritoItemsLive = carritoViewModel.getCarritoItems();

@@ -89,6 +89,13 @@ public class MisDatosFragment extends Fragment implements OnMapReadyCallback, Go
         });
 
         direccion = view.findViewById(R.id.TxtDireccion);
+        TextView nombre = view.findViewById(R.id.TxtNomApe);
+        TextView tel = view.findViewById(R.id.TxtTelefono);
+        LiveData<Clientes> cli = misDatosViewModel.obtenerCliente();
+        cli.observe(getViewLifecycleOwner(), clientes -> {
+            nombre.setText(clientes.getNombre() + " " + clientes.getApellido());
+            tel.setText(clientes.getTelefono().toString());
+        });
 
 
         Button btnEditarDatos = view.findViewById(R.id.BtnEditarDatos);
@@ -146,7 +153,7 @@ public class MisDatosFragment extends Fragment implements OnMapReadyCallback, Go
                 misDatosViewModel.obtenerCliente().observe(getViewLifecycleOwner(), clientes -> {
                     LiveData<Direcciones> dirGuardada = misDatosViewModel.obtenerDireccion(clientes.getDireccion_id());
                     dirGuardada.observe(getViewLifecycleOwner(), direcciones -> {
-                        if (direcciones != null) {
+                        if (direcciones.getDireccion() != null) {
                             mMap.addMarker(new MarkerOptions().position(new LatLng(direcciones.getLatitud(), direcciones.getLongitud())).title("Ubicación guardada"));
                             direccion.setText(direcciones.getDireccion());
                         } else {

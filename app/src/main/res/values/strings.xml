@@ -43,4 +43,6 @@ para crear una nueva password via email.</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="nota_maps">NOTA: Mantén presionado en la nueva ubicación y luego presiona el boton Actualizar dirección para cambiar tu dirección</string>
+
 </resources>

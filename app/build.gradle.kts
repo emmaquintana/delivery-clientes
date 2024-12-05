@@ -59,4 +59,5 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
     implementation("com.jakewharton.threetenabp:threetenabp:1.4.4")
+    implementation("com.squareup.picasso:picasso:2.8")
 }

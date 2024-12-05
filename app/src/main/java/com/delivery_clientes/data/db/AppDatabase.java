@@ -37,7 +37,7 @@ import com.delivery_clientes.data.db.entities.Usuario;
         Productos.class,
         Repartidores.class,
         Seguimiento.class},
-        version = 4)
+        version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UsuariosDAO usuariosDAO();
     public abstract CategoriasDAO categoriasDAO();

@@ -77,51 +77,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/EdadContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/NomApeContainer">
-
-                <TextView
-                    android:id="@+id/TxtEdadTitulo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Edad"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/TxtEdad"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0" />
-
-                <TextView
-                    android:id="@+id/TxtEdad"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="18 años"
-                    android:textColor="#717171"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/TxtEdadTitulo" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/TelefonoContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/EdadContainer">
+                app:layout_constraintTop_toBottomOf="@+id/NomApeContainer">
 
                 <TextView
                     android:id="@+id/TxtTelefonoTitulo"
@@ -200,6 +162,16 @@
                     map:cameraZoom="15"
                     map:uiRotateGestures="true"
                     map:uiZoomControls="true" />
+
+                <TextView
+                    android:id="@+id/TxtNota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nota_maps"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/map" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
