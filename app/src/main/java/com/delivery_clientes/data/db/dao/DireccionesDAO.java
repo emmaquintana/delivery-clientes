@@ -1,5 +1,6 @@
 package com.delivery_clientes.data.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -18,6 +19,9 @@ public interface DireccionesDAO {
     @Query("SELECT * FROM direcciones WHERE id = :direccion_id")
     Direcciones obtenerDireccionPorId(int direccion_id);
 
+    @Query("SELECT * FROM direcciones WHERE id = :direccion_id")
+    LiveData<Direcciones> obtenerDireccionPorIdLive(int direccion_id);
+
     @Query("SELECT * FROM direcciones WHERE direccion = :direccion")
     Direcciones obtenerDireccionPorDireccion(String direccion);
 
@@ -26,7 +30,7 @@ public interface DireccionesDAO {
 
 
     @Insert
-    void insertarDireccion(Direcciones direccion);
+    long insertarDireccion(Direcciones direccion);
 
     @Update
     void actualizarDireccion(Direcciones direccion);

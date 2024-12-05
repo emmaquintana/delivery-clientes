@@ -74,10 +74,17 @@ public class CrearPerfilFragment extends Fragment {
                     // Observa el resultado de la operación
                     crearPerfilViewModel.getClienteCreado().observe(getViewLifecycleOwner(), clienteCreado -> {
                         if (clienteCreado != null) {
+                            NavController navController = Navigation.findNavController(view);
                             Toast.makeText(getContext(), "Perfil creado exitosamente", Toast.LENGTH_SHORT).show();
 
+                            crearPerfilViewModel.getDireccionCliente(clienteCreado.getDireccion_id()).observe(getViewLifecycleOwner(), direcciones -> {
+                                if (direcciones.getDireccion() == null){
+                                    // Navega al perfil
+                                    navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
+                                    Toast.makeText(getContext(), "Ingrese una dirección", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             // Navega al home
-                            NavController navController = Navigation.findNavController(view);
                             navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
                         } else {
                             Toast.makeText(getContext(), "Error al crear el perfil", Toast.LENGTH_SHORT).show();
