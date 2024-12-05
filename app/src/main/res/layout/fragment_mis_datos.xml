@@ -139,7 +139,6 @@
                     android:id="@+id/TxtDireccion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Santiago del Estero, Santiago del Estero\nAv. Pedro León Gallo 341"
                     android:textColor="#717171"
                     android:textSize="14sp"
                     android:textStyle="bold"
