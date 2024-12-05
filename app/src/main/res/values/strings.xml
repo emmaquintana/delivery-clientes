@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">delivery-clientes</string>
     <string name="title_tienda">Tienda</string>
-    <string name="logo_de_la_aplicacion">Delivery Clientes</string>
+    <string name="logo_de_la_aplicacion">Delivery</string>
 
     <string name="login">Iniciar Sesión</string>
     <string name="signup">Registrar</string>
