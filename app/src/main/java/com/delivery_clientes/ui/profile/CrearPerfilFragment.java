@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,14 @@ import android.widget.Toast;
 
 import com.delivery_clientes.R;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 public class CrearPerfilFragment extends Fragment {
 
@@ -60,37 +69,73 @@ public class CrearPerfilFragment extends Fragment {
                 String fechaNacimiento = fechaNacimientoInput.getText().toString().trim();
                 String telefono = telefonoInput.getText().toString().trim();
 
-                if (apellido.isEmpty() || nombre.isEmpty() || fechaNacimiento.isEmpty() || telefono.isEmpty()) {
+                if (TextUtils.isEmpty(apellido) || TextUtils.isEmpty(nombre) || TextUtils.isEmpty(fechaNacimiento) || TextUtils.isEmpty(telefono)) {
                     Toast.makeText(getContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else {
 
-                    // Obtiene el email
-                    Bundle bundle = getArguments();
-                    String email = bundle.getString("email");
-                    // Creaa cliente en la base de datos
-                    crearPerfilViewModel.crearCliente(nombre, apellido, fechaNacimiento, telefono, email);
+                // Usar SimpleDateFormat para analizar la fecha
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                Date fechaNacimientoDate = null;
 
-                    // Observa el resultado de la operación
-                    crearPerfilViewModel.getClienteCreado().observe(getViewLifecycleOwner(), clienteCreado -> {
-                        if (clienteCreado != null) {
-                            NavController navController = Navigation.findNavController(view);
-                            Toast.makeText(getContext(), "Perfil creado exitosamente", Toast.LENGTH_SHORT).show();
+                try {
+                    // Intentamos parsear la fecha del input
+                    fechaNacimientoDate = sdf.parse(fechaNacimiento);
 
-                            crearPerfilViewModel.getDireccionCliente(clienteCreado.getDireccion_id()).observe(getViewLifecycleOwner(), direcciones -> {
-                                if (direcciones.getDireccion() == null){
-                                    // Navega al perfil
-                                    navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
-                                    Toast.makeText(getContext(), "Ingrese una dirección", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            // Navega al home
-                            navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
-                        } else {
-                            Toast.makeText(getContext(), "Error al crear el perfil", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    // Si la fecha es válida, convertirla a un Calendar
+                    Calendar fechaNacimientoCalendar = Calendar.getInstance();
+                    fechaNacimientoCalendar.setTime(fechaNacimientoDate);
+
+                    // Obtenemos la fecha actual
+                    Calendar fechaActual = Calendar.getInstance();
+
+                    // Calculamos la edad
+                    int edad = fechaActual.get(Calendar.YEAR) - fechaNacimientoCalendar.get(Calendar.YEAR);
+
+                    // Si el cumpleaños aún no ha ocurrido este año, restamos 1 de la edad
+                    if (fechaActual.get(Calendar.MONTH) < fechaNacimientoCalendar.get(Calendar.MONTH) ||
+                            (fechaActual.get(Calendar.MONTH) == fechaNacimientoCalendar.get(Calendar.MONTH) && fechaActual.get(Calendar.DAY_OF_MONTH) < fechaNacimientoCalendar.get(Calendar.DAY_OF_MONTH))) {
+                        edad--;
+                    }
+
+                    // Verificamos si tiene 18 años o más
+                    if (edad < 18) {
+                        Toast.makeText(getContext(), "Debe tener al menos 18 años", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                } catch (ParseException e) {
+                    // Si no se puede parsear la fecha
+                    Toast.makeText(getContext(), "Formato de fecha inválido. Use dd-MM-yyyy", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                // Obtiene el email desde los argumentos del bundle
+                Bundle bundle = getArguments();
+                String email = bundle.getString("email");
+
+                // Crear cliente en la base de datos
+                crearPerfilViewModel.crearCliente(nombre, apellido, fechaNacimiento, telefono, email);
+
+                // Observa el resultado de la operación
+                crearPerfilViewModel.getClienteCreado().observe(getViewLifecycleOwner(), clienteCreado -> {
+                    if (clienteCreado != null) {
+                        NavController navController = Navigation.findNavController(view);
+                        Toast.makeText(getContext(), "Perfil creado exitosamente", Toast.LENGTH_SHORT).show();
+
+                        // Verifica si el cliente tiene dirección
+                        crearPerfilViewModel.getDireccionCliente(clienteCreado.getDireccion_id()).observe(getViewLifecycleOwner(), direcciones -> {
+                            if (direcciones.getDireccion() == null){
+                                navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
+                                Toast.makeText(getContext(), "Ingrese una dirección", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        // Navega al home
+                        navController.navigate(R.id.action_crearPerfilFragment_to_containerActivity);
+                    } else {
+                        Toast.makeText(getContext(), "Error al crear el perfil", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
