@@ -1,5 +1,6 @@
 package com.delivery_clientes.ui.profile;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.delivery_clientes.R;
@@ -55,6 +57,33 @@ public class CrearPerfilFragment extends Fragment {
 
         CrearPerfilViewModelFactory factory = new CrearPerfilViewModelFactory(getActivity().getApplication());
         CrearPerfilViewModel crearPerfilViewModel = new ViewModelProvider(this, factory).get(CrearPerfilViewModel.class);
+
+        TextInputEditText fechaNacimientoInput = view.findViewById(R.id.fechaNacimientoInput);
+
+        // Configura el DatePickerDialog
+        fechaNacimientoInput.setOnClickListener(v -> {
+            final Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            // Muestra el DatePicker
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    getContext(),
+                    (DatePicker view1, int selectedYear, int selectedMonth, int selectedDay) -> {
+                        // Actualiza el campo con la fecha seleccionada
+                        String formattedDate = String.format("%02d-%02d-%04d", selectedDay, selectedMonth + 1, selectedYear);
+                        fechaNacimientoInput.setText(formattedDate);
+                    },
+                    year, month, day
+            );
+
+            // Opcional: Limitar la fecha seleccionable para evitar menores de 18 años
+            calendar.set(Calendar.YEAR, year - 18);
+            datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+
+            datePickerDialog.show();
+        });
 
         btnCrearPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
