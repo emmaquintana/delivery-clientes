@@ -76,7 +76,6 @@ public class EditarDatosFragment extends Fragment {
                 telefonoInput.setText(cli.getTelefono() != null ? cli.getTelefono() : "");
             } else {
                 Log.e("EditarDatosFragment", "Cliente no encontrado");
-                Toast.makeText(getContext(), "Error: Cliente no encontrado", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -114,7 +113,6 @@ public class EditarDatosFragment extends Fragment {
                                     Toast.makeText(getContext(), "Datos actualizados con éxito", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Log.e("EditarDatosFragment", "Usuario no encontrado para el email: " + emailAnterior);
-                                    Toast.makeText(getContext(), "Error: Usuario no encontrado", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } catch (Exception e) {
@@ -123,7 +121,6 @@ public class EditarDatosFragment extends Fragment {
                         }
                     } else {
                         Log.e("EditarDatosFragment", "Cliente no encontrado");
-                        Toast.makeText(getContext(), "Error: Cliente no encontrado", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {

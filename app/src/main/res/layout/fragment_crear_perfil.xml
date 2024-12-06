@@ -122,28 +122,21 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fechaNacimientoInputLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColorHint="@color/md_theme_onPrimaryContainer"
+                    android:layout_height="wrap_content"
+                    android:hint="Fecha de Nacimiento"
                     app:boxBackgroundColor="@color/md_theme_primaryContainer"
                     app:boxCornerRadiusBottomEnd="25dp"
                     app:boxCornerRadiusBottomStart="25dp"
                     app:boxCornerRadiusTopEnd="25dp"
                     app:boxCornerRadiusTopStart="25dp"
-                    app:boxStrokeColor="@color/md_theme_secondary"
-                    app:boxStrokeWidth="0.5dp"
-                    app:endIconTint="@color/md_theme_onPrimaryContainer"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/fechaNacimientoInput"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="FECHA DE NACIMIENTO"
-                        android:inputType="date"
-                        android:textColor="@color/md_theme_onPrimaryContainer" />
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
