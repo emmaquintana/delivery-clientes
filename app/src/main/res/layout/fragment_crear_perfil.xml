@@ -141,7 +141,7 @@
                         android:id="@+id/fechaNacimientoInput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="FECHA DE NACIMIENTO"
+                        android:hint="FECHA DE NACIMIENTO (dd-mm-yyyy)"
                         android:inputType="date"
                         android:textColor="@color/md_theme_onPrimaryContainer" />
                 </com.google.android.material.textfield.TextInputLayout>
